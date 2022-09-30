@@ -29,7 +29,6 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,6 +36,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'analistas',
+    'cedulas',
+    'certificaciones_bancarias',
+    'certificaciones_laborales',
+    'comprobantes_de_pago',
+    'creditos',
+    'documentos',
+    'empleados',
+    'empresas',
+    'nominas',
+    'reglas',
+    'usuarios',   
 ]
 
 MIDDLEWARE = [
@@ -77,8 +88,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'avanzo',
-        'USER': 'metateoremas',
-        'PASSWORD': 'arquisoft2022',
+        'USER': 'tony', 
+        'PASSWORD': 'tony',
+        #'USER': 'metateoremas',
+        #'PASSWORD': 'arquisoft2022',
         'HOST': 'localhost',
         'PORT': '5432',
     }
