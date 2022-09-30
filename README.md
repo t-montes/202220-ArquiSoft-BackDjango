@@ -1,5 +1,4 @@
 # Proyecto_Uno
-credenciales database
-    user:avanzo_user
-    pass:123
-    database:avanzo
+'NAME': 'avanzo'
+'USER': 'metateoremas'
+'PASSWORD': 'arquisoft2022'
