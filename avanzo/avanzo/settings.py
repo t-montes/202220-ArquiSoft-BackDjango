@@ -25,8 +25,7 @@ SECRET_KEY = 'django-insecure-^$f4#m*1!y&e*8c5-z-po%rd^lkx0w17vtg&0!as#$h+6*%(4x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['35.232.141.99']
 
 # Application definition
 INSTALLED_APPS = [
@@ -92,6 +91,7 @@ DATABASES = {
         'PASSWORD': "arquisoft2022",
         'HOST': "10.206.0.4",
         'PORT': "5432",
+        
     }
 }
 
