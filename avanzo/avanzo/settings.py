@@ -77,8 +77,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'avanzo',
-        'USER': 'avanzo_user',
-        'PASSWORD': '123',
+        'USER': 'metateoremas',
+        'PASSWORD': 'arquisoft2022',
         'HOST': 'localhost',
         'PORT': '5432',
     }
