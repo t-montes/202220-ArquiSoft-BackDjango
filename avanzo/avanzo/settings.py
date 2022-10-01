@@ -85,15 +85,14 @@ WSGI_APPLICATION = 'avanzo.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': "django.db.backends.postgresql_psycopg2",
-        'NAME': "avanzo",
-        'USER': "metateoremas",
-        'PASSWORD': "arquisoft2022",
-        'HOST': "10.206.0.4",
-        'PORT': "5432",
-        
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME':'monitoring_db',
+        'USER':'monitoring_user',
+        'PASSWORD':'isis2503',
+        'HOST':'10.128.0.2',
+        'PORT':'5432',
     }
-}
+ }
 
 
 # Password validation
