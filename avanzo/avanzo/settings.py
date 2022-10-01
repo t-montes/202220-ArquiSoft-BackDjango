@@ -88,7 +88,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME':'monitoring_db',
         'USER':'monitoring_user',
-        'PASSWORD':'isis2503',
+        'PASSWORD':'metateoremas',
         'HOST':'10.128.0.2',
         'PORT':'5432',
     }
