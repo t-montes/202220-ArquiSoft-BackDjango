@@ -21,6 +21,5 @@ def analizar_documentos(request):
     context = {
         'form': form,
     }
-    return render(request, 'documentos/analizarDocumentos.html', context)
 
 
