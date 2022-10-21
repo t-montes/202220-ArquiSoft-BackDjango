@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-^$f4#m*1!y&e*8c5-z-po%rd^lkx0w17vtg&0!as#$h+6*%(4x'
+SECRET_KEY = 'django-insecure-*_+g!=9x=jfg86plx47c$c*q63cfy1rqchqas(k38gx$=0u6rp'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -29,6 +29,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -47,7 +48,7 @@ INSTALLED_APPS = [
     'empresas',
     'nominas',
     'reglas',
-    'usuarios',   
+    'usuarios',  
 ]
 
 MIDDLEWARE = [
@@ -87,12 +88,10 @@ WSGI_APPLICATION = 'avanzo.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'avanzo',
-        'USER': 'tony', 
-        'PASSWORD': 'tony',
-        #'USER': 'metateoremas',
-        #'PASSWORD': 'arquisoft2022',
-        'HOST': 'localhost',
+        'NAME': 'avanzo_db',
+        'USER': 'avanzo_user',
+        'PASSWORD': 'avanzo',
+        'HOST': '10.128.0.4',
         'PORT': '5432',
     }
 }
