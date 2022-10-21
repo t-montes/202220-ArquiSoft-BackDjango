@@ -14,7 +14,6 @@ channel.exchange_declare(exchange=exchange, exchange_type='topic')
 
 
 def analizador_documentos(form):
-    print("Documento",form.cleaned_data['nombre'])
     cuerpo = "'nombre':{}, 'path_image':{}, 'num_documento':{}".format(form.cleaned_data['nombre'],form.cleaned_data['path_image'],form.cleaned_data['num_documento'])
     channel.basic_publish(exchange=exchange, routing_key=topic, body=cuerpo)
     connection.close()
