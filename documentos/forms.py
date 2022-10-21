@@ -5,12 +5,12 @@ class DocumentosForm(forms.ModelForm):
     class Meta:
         model = Documento
         fields = [
-            'name',
+            'nombre',
             'path_image', 
-            'num_document'
+            'num_documento'
         ]
         labels = {
-            'name': 'Name',
+            'nombre': 'Nombre',
             'path_image': 'Path_image',
-            'num_document': 'Num_document'
+            'num_documento': 'Num_documento'
         }
