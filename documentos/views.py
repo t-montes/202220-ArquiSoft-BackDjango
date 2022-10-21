@@ -7,7 +7,7 @@ from django.http import HttpResponse
 
 
 def analizar_documentos(request):
-    print("request::::::::::::::", request)
+    print("request::::::::::::::", request.data)
     if request.method == 'POST':
         form = DocumentosForm(request.POST)
         print("-----------", form)
