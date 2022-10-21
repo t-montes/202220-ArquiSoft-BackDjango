@@ -22,4 +22,10 @@ def analizar_documentos(request):
             return HttpResponse('error',status=412)
     else:
         print("Método no existente")
-        return HttpResponse('error no es post',status=404)
+        form = DocumentosForm()
+    
+    context = {
+        'form': form
+    }
+    
+    return HttpResponse('error no es post',status=404)
