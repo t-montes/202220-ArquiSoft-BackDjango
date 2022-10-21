@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -94,7 +93,7 @@ DATABASES = {
         'HOST': '10.128.0.4',
         'PORT': '5432',
     }
-}
+ }
 
 
 # Password validation
