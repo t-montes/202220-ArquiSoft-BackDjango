@@ -11,7 +11,7 @@ def analizar_documentos(request):
         form = DocumentosForm(request.POST)
         if form.is_valid():
             print("El form si es valido")
-            analizador_documentos(request)
+            analizador_documentos(form)
             messages.add_message(request, messages.SUCCESS, 'Successfully analizing the document')
             return HttpResponse('ok',status=200)
         else:

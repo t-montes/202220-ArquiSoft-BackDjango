@@ -13,7 +13,8 @@ channel = connection.channel()
 channel.exchange_declare(exchange=exchange, exchange_type='topic')
 
 
-def analizador_documentos(request):
-    channel.basic_publish(exchange=exchange, routing_key=topic, body=request)
+def analizador_documentos(form):
+    cuerpo = form.cleaned_data['nombre']+","+form.cleaned_data['path_image']+","+form.cleaned_data['num_documento']
+    channel.basic_publish(exchange=exchange, routing_key=topic, body=cuerpo)
     connection.close()
     print('> Sending documents. To exit press CTRL+C')
