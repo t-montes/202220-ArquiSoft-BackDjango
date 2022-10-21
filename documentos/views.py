@@ -9,6 +9,7 @@ from django.http import HttpResponse
 def analizar_documentos(request):
     if request.method == 'POST':
         form = DocumentosForm(request.POST)
+        print("-----------", form)
         if form.is_valid():
             print("El form si es valido")
             analizador_documentos(form)
@@ -20,4 +21,4 @@ def analizar_documentos(request):
             return HttpResponse('error',status=412)
     else:
         print("Método no existente")
-        return HttpResponse('error',status=404)
+        return HttpResponse('error no es post',status=404)
