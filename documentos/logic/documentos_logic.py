@@ -12,7 +12,7 @@ topic = 'DocumentosTopic'
 
 
 def analizador_documentos(form):
-    
+
     connection = pika.BlockingConnection(pika.ConnectionParameters(host=rabbit_host, credentials=pika.PlainCredentials(rabbit_user, rabbit_password)))
     channel = connection.channel()
     channel.exchange_declare(exchange=exchange, exchange_type='topic')
@@ -21,3 +21,4 @@ def analizador_documentos(form):
     channel.basic_publish(exchange=exchange, routing_key=topic, body=cuerpo)
     connection.close()
     print('> Sending documents. To exit press CTRL+C')
+    print(cuerpo)
