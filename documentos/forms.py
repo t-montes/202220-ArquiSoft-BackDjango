@@ -9,8 +9,3 @@ class DocumentosForm(forms.ModelForm):
             'path_image', 
             'num_documento'
         ]
-        labels = {
-            'nombre': 'Nombre',
-            'path_image': 'Path_image',
-            'num_documento': 'Num_documento'
-        }

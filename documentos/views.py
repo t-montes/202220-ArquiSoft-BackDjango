@@ -2,8 +2,6 @@ from django.shortcuts import render
 from .logic.documentos_logic import analizador_documentos
 from django.contrib import messages
 from .forms import DocumentosForm
-from django.http import HttpResponseRedirect
-from django.urls import reverse
 from django.http import HttpResponse
 
 
@@ -15,16 +13,11 @@ def analizar_documentos(request):
             print("El form si es valido")
             analizador_documentos(form)
             messages.add_message(request, messages.SUCCESS, 'Successfully analizing the document')
-            return HttpResponse('ok')
+            return HttpResponse('ok',status=200)
         else:
             print("El form no es valido")
             messages.add_message(request, messages.ERROR, 'Error analizing the document')
-            return HttpResponse('error')
+            return HttpResponse('error',status=412)
     else:
-        print("No es valido el form")
-        form = DocumentosForm()
-
-        context = {
-        'form': form,
-        }
-        return HttpResponse('error')
+        print("Método no existente")
+        return HttpResponse('error',status=404)
