@@ -17,7 +17,9 @@ def analizar_documentos(request):
             messages.add_message(request, messages.SUCCESS, 'Successfully analizing the document')
             return HttpResponse('ok')
         else:
-            print(form.errors)
+            print("El form no es valido")
+            messages.add_message(request, messages.ERROR, 'Error analizing the document')
+            return HttpResponse('error')
     else:
         print("No es valido el form")
         form = DocumentosForm()
@@ -25,4 +27,4 @@ def analizar_documentos(request):
         context = {
         'form': form,
         }
-        return HttpResponse('not ok')
+        return HttpResponse('error')
