@@ -5,13 +5,12 @@ class DocumentosForm(forms.ModelForm):
     class Meta:
         model = Documento
         fields = [
-            'path_image', 'num_documento', 'nombre'
+            'name',
+            'path_image', 
+            'num_document'
         ]
         labels = {
-            'path_image': forms.CharField(max_length=100),
-            'num_documento': forms.CharField(max_length=100),
-            'nombre': forms.CharField(max_length=100)
+            'name': 'Name',
+            'path_image': 'Path_image',
+            'num_document': 'Num_document'
         }
-        path_image = forms.CharField(max_length=100)
-        num_documento = forms.CharField(max_length=100)
-        nombre = forms.CharField(max_length=100)
