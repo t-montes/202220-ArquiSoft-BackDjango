@@ -2,12 +2,11 @@ import time
 import pika
 
 #Ip de la base de datos
-rabbit_host = '10.128.0.5'
-rabbit_user = 'monitoring_user'
-rabbit_password = 'isis2503'
+rabbit_host = '10.128.0.8'
+rabbit_user = 'avanzo_user'
+rabbit_password = 'avanzo'
 exchange = 'analizando_documentos'
 topic = 'DocumentosTopic'
-
 
 connection = pika.BlockingConnection(pika.ConnectionParameters(host=rabbit_host, credentials=pika.PlainCredentials(rabbit_user, rabbit_password)))
 channel = connection.channel()
