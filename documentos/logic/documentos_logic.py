@@ -3,7 +3,7 @@ import pika
 from ..models import Documento
 
 #Ip de la base de datos
-rabbit_host = '10.128.0.8'
+rabbit_host = '10.128.0.12'
 rabbit_user = 'avanzo_user'
 rabbit_password = 'avanzo'
 exchange = 'analizando_documentos'

@@ -90,7 +90,7 @@ DATABASES = {
         'NAME': 'avanzo_db',
         'USER': 'avanzo_user',
         'PASSWORD': 'avanzo',
-        'HOST': '10.128.0.4',
+        'HOST': '10.128.0.10',
         'PORT': '5432',
     }
  }
