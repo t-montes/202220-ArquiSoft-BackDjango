@@ -4,16 +4,20 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.core import serializers
 from .models import Formato
-import json
-
+from .logic.FormatosForm import FormatosForm
 # Create your views here.
 
 @csrf_exempt
 def index(request):
     if request.method == 'POST':
-        data = json.loads(request.body)
-        formato = Formato(nombre=data['nombre'], descripcion=data['descripcion'])
-        formato.save()
-        return JsonResponse({'status': 'ok'})
+        data = request.POST
+        form = FormatosForm(data, request.FILES)
+        if form.is_valid():
+            form.save()
+            return JsonResponse({'status': 'ok'})
+        else:
+            return JsonResponse({'status': 'error'})
     else:
-        return HttpResponse("Hello, world. You're at the formato index.")
+        formatos = Formato.objects.all()
+        data = serializers.serialize('json', formatos)
+        return HttpResponse(data, content_type='application/json')
