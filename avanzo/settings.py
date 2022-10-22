@@ -92,8 +92,8 @@ DATABASES = {
         'NAME': 'avanzo_db',
         'USER': 'avanzo_user',
         'PASSWORD': 'avanzo',
-        'HOST': 'localhost',
-        'PORT': '',
+        'HOST': '10.128.0.10',
+        'PORT': '5432',
     }
  }
 

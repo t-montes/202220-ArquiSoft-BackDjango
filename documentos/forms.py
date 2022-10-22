@@ -6,6 +6,11 @@ class DocumentosForm(forms.ModelForm):
         model = Documento
         fields = [
             'nombre',
-            'path_image', 
-            'num_documento'
+            'num_documento',
+            'path_image'
         ]
+        labels = {
+            'nombre': 'Nombre',
+            'num_documento': 'Num_documento',
+            'path_image': 'Path_image'
+        }
