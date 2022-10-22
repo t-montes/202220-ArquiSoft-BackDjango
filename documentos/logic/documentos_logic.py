@@ -1,5 +1,6 @@
 import time
 import pika
+from ..models import Documento
 
 #Ip de la base de datos
 rabbit_host = '10.128.0.8'
@@ -7,9 +8,6 @@ rabbit_user = 'avanzo_user'
 rabbit_password = 'avanzo'
 exchange = 'analizando_documentos'
 topic = 'DocumentosTopic'
-
-
-
 
 def analizador_documentos(form):
 
@@ -22,3 +20,16 @@ def analizador_documentos(form):
     connection.close()
     print('> Sending documents. To exit press CTRL+C')
     print(cuerpo)
+
+def get_documentos ():
+    queryset = Documento.objects.all()
+    return (queryset)
+
+
+def get_documento_by_num_documento (num_documento):
+    try:
+        documento = Documento.objects.get(num_documento=num_documento)
+        return (documento)
+    except:
+        documento = None
+        return (documento)
