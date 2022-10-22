@@ -47,7 +47,9 @@ INSTALLED_APPS = [
     'empresas',
     'nominas',
     'reglas',
-    'usuarios',  
+    'usuarios',
+    'formato',
+    'celda'          
 ]
 
 MIDDLEWARE = [
@@ -90,8 +92,8 @@ DATABASES = {
         'NAME': 'avanzo_db',
         'USER': 'avanzo_user',
         'PASSWORD': 'avanzo',
-        'HOST': '10.128.0.4',
-        'PORT': '5432',
+        'HOST': 'localhost',
+        'PORT': '',
     }
  }
 

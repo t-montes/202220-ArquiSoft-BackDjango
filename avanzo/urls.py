@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('health-check/', views.healthCheck),
     path('', include('documentos.urls')),
+    path('formato/', include('formato.urls')),
 ]
