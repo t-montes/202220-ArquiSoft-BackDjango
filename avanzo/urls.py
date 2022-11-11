@@ -23,4 +23,6 @@ urlpatterns = [
     path('', include('documentos.urls')),
     path('formato/', include('formato.urls')),
     path('celda/', include('celda.urls')),
+    path(r'', include('django.contrib.auth.urls')),
+    path(r'', include('social_django.urls')),
 ]

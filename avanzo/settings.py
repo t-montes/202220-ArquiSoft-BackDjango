@@ -49,7 +49,8 @@ INSTALLED_APPS = [
     'reglas',
     'usuarios',
     'formato',
-    'celda'          
+    'celda',
+    'social_django',    
 ]
 
 MIDDLEWARE = [
@@ -140,3 +141,18 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#Authentication
+# https://metateoremas.auth0.com dominio auth0
+IP_PUBLICA="35.222.13.22" #TODO
+domain="metateoremas.us.auth0.com"
+
+LOGIN_URL = "/login/auth0" 
+LOGIN_REDIRECT_URL = "/" 
+LOGOUT_REDIRECT_URL = "https://"+domain+"/v2/logout?returnTo=http%3A%2F%2F"+IP_PUBLICA+":8080" 
+SOCIAL_AUTH_TRAILING_SLASH = False # Remove end slash from routes 
+SOCIAL_AUTH_AUTH0_DOMAIN = domain
+SOCIAL_AUTH_AUTH0_KEY = 'vFrSF4ckkpj5snqOF7abWxL4YbBmGGgN' 
+SOCIAL_AUTH_AUTH0_SECRET = 'BWLbocS2hP6NxhVJMiR1ZTsn4bHiZ6kRFJd6RXpUpiWENHQtTHoT3Ghi8ha2RuOX' 
+SOCIAL_AUTH_AUTH0_SCOPE = [ 'openid', 'profile','email','role', ] 
+AUTHENTICATION_BACKENDS = { 'monitoring.auth0backend.Auth0','django.contrib.auth.backends.ModelBackend',}
