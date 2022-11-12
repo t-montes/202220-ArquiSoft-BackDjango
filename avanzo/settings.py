@@ -68,7 +68,7 @@ ROOT_URLCONF = 'avanzo.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'monitoring', 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'avanzo', 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
