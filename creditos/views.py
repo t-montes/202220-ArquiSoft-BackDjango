@@ -14,17 +14,11 @@ def credito_update(request):
     if request.method == 'PUT':
         if role == "ANALIZADOR":
             print("request BODY", request.body)
-            queryDict = QueryDict(request.body)
-            print("queryDict", queryDict)
-            form = CreditoForm(queryDict)
-            print("FORM [views]:", form)
-            if form.is_valid():
-                update_credit(form)
-                messages.add_message(request, messages.SUCCESS, 'Credito actualizado correctamente')
-                return HttpResponse(status=200)
-            else:
-                messages.add_message(request, messages.ERROR, 'Error al actualizar credito')
-                return HttpResponse(status=200)
+            # request.body to dict
+            body = request.body.decode('utf-8')
+            update_credit(body)
+            messages.add_message(request, messages.SUCCESS, 'Credito actualizado correctamente')
+            return HttpResponse(status=200)
         else:
             return HttpResponse("Unauthorized User", status=401)
     else:
