@@ -15,7 +15,8 @@ def credito_update(request):
         print("Rol Válido")
         print("Método: PUT")
         if role == "ANALIZADOR":
-            form = CreditoForm(request.PUT)
+            print("request", request)
+            form = CreditoForm(request.POST)
             print("FORM [views]:", form)
             if form.is_valid():
                 print("FORM IS VALID [views]")
