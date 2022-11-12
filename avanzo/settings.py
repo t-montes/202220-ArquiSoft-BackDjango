@@ -155,4 +155,4 @@ SOCIAL_AUTH_AUTH0_DOMAIN = domain
 SOCIAL_AUTH_AUTH0_KEY = 'vFrSF4ckkpj5snqOF7abWxL4YbBmGGgN' 
 SOCIAL_AUTH_AUTH0_SECRET = 'BWLbocS2hP6NxhVJMiR1ZTsn4bHiZ6kRFJd6RXpUpiWENHQtTHoT3Ghi8ha2RuOX' 
 SOCIAL_AUTH_AUTH0_SCOPE = [ 'openid', 'profile','email','role', ] 
-AUTHENTICATION_BACKENDS = { 'monitoring.auth0backend.Auth0','django.contrib.auth.backends.ModelBackend',}
+AUTHENTICATION_BACKENDS = { 'avanzo.auth0backend.Auth0','django.contrib.auth.backends.ModelBackend',}
