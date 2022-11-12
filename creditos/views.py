@@ -8,6 +8,7 @@ from .forms import CreditoForm
 
 @login_required
 def credito_update(request):
+
     print("Request recibida")
     role = getRole(request)
     print("ROL:", role)
@@ -15,7 +16,9 @@ def credito_update(request):
         print("Rol Válido")
         print("Método: PUT")
         if role == "ANALIZADOR":
-            print("request", request)
+            print("request POST", request.POST)
+            for i in dir(request):
+                print("\t",i, getattr(request, i))
             form = CreditoForm(request.POST)
             print("FORM [views]:", form)
             if form.is_valid():
