@@ -23,6 +23,6 @@ def credito_update(request):
         else:
             return HttpResponse("Unauthorized User", status=401)
     else:
-        return HttpResponse("BAD REQUEST", status=204)
+        return HttpResponse("BAD REQUEST", status=400)
 
 # Create your views here.
