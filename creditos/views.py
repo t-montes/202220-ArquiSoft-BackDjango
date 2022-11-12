@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from avanzo.auth0backend import getRole
 from .logic.credito_logic import update_credit
 from .forms import CreditoForm
-from django.http import QueryDict
+import json
 
 @login_required
 def credito_update(request):
@@ -16,6 +16,7 @@ def credito_update(request):
             print("request BODY", request.body)
             # request.body to dict
             body = request.body.decode('utf-8')
+            body = json.loads(body)
             update_credit(body)
             messages.add_message(request, messages.SUCCESS, 'Credito actualizado correctamente')
             return HttpResponse(status=200)
