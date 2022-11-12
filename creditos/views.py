@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from avanzo.auth0backend import getRole
 from .logic.credito_logic import update_credit
 from .forms import CreditoForm
+from django.http import QueryDict
 
 @login_required
 def credito_update(request):
@@ -16,10 +17,10 @@ def credito_update(request):
         print("Rol Válido")
         print("Método: PUT")
         if role == "ANALIZADOR":
-            print("request POST", request.POST)
+            print("request BODY", request.body)
             for i in dir(request):
                 print("\t",i, getattr(request, i))
-            form = CreditoForm(request.POST)
+            form = CreditoForm(QueryDict(request.body))
             print("FORM [views]:", form)
             if form.is_valid():
                 print("FORM IS VALID [views]")
