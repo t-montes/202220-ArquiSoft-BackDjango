@@ -12,11 +12,16 @@ def credito_update(request):
     if request.method == 'PUT':
         if role == "ANALIZADOR":
             form = CreditoForm(request.PUT)
+            print("FORM [views]:", form)
             if form.is_valid():
+                print("FORM IS VALID [views]")
                 update_credit(form)
+                print("FORM UPDATED [views]")
                 messages.add_message(request, messages.SUCCESS, 'Credito actualizado correctamente')
-                form.save()
-                return HttpResponseRedirect('/creditos')
+                return HttpResponse(status=200)
+            else:
+                messages.add_message(request, messages.ERROR, 'Error al actualizar credito')
+                return HttpResponse(status=200)
         else:
             return HttpResponse("Unauthorized User", status=401)
     else:
