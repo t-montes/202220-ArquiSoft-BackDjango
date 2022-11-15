@@ -22,7 +22,11 @@ Instrucciones para garantizar HTTPS en GCP con un proyecto DJANGO.
     
 # Instrucciones
 
-Ubiquese en la carpeta del proyecto Django que contenga el archivo manage.py
+Ubiquese en la carpeta del proyecto Django que contenga el archivo manage.py e instale python con el siguiente comando:
+```
+sudo apt-get update
+sudo apt-get install python3.6
+```
 
 ## Crear un entorno virtual con Virtual env
 
@@ -36,7 +40,6 @@ source ~/entornos/blog/bin/activate
 >Le llamaremos vEnv al entorno virtual python y lo guardaremos en una carpeta llamada env_avanzo sobre una carpeta que nos guardará todos los entornos.
 
 ## Instalar dependencias
- > NOTA: asegurese de que el entorno virtual de python esté activo antes de incializar este proceso.
+>**NOTA**: asegurese de que el entorno virtual de python esté activo antes de incializar este proceso.
 
-
-
+1. localice el archivo requirements.txt donde se ubican las dependencias
