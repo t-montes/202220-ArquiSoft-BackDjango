@@ -72,12 +72,12 @@ sudo apt-get install python3-pip -y
 
 ```
 sudo apt-get update 
-sudo apt-get install  python3-venv
-mkdir ~/entornos_virtuales/env_avanzo
-python3 -m vEnv ~/entornos_virtuales/env_avanzo
+sudo apt-get install  python3-venv -y
+mkdir -p ~/entornos_virtuales/env_avanzo
+python3 -m venv ~/entornos_virtuales/env_avanzo
 source ~/entornos_virtuales/env_avanzo/bin/activate
 ```
->Le llamaremos vEnv al entorno virtual python y lo guardaremos en una carpeta llamada env_avanzo sobre una carpeta que nos guardará todos los entornos.
+>Le llamaremos env_avanzo al entorno virtual python y lo guardaremos en una carpeta llamada entornos_virtuales.
 
 ## Instalar dependencias
 >**NOTA**: asegurese de que el entorno virtual de python esté activo antes de incializar este proceso.
