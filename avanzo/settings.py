@@ -50,8 +50,7 @@ INSTALLED_APPS = [
     'usuarios',
     'formato',
     'celda',
-    'social_django',    
-    "django.contrib.staticfiles"
+    'social_django'
 ]
 
 MIDDLEWARE = [
