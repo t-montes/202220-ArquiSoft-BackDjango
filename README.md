@@ -53,7 +53,11 @@ Instrucciones para garantizar HTTPS en GCP con un proyecto DJANGO.
     para poder colocar los que sacó del CLOUD DNS de GCP
     ![imagen_prueba10](https://i.gyazo.com/7ba84c1dbd2a19d1f2e3749fe2ab55ca.png)
     Ya con esto el dominio quedará apuntando a la dirección IP deseada satisfactoriamente!
+- Etiquetas de red máquinas GCP
 
+    >las máquinas por defecto que están en GCP tienen unas etiquetas de red que solo permiten tráfico HTTP/S desde ciertas máquinas que tengan anclada dicha etiqueta, esto puede imposibilitar que ciertas peticiones sean enviadas por lo tanto se deben modificar de la siguiente manera:
+
+    ![](https://i.gyazo.com/f1ba81d5018fa58118866d3d09214280.png) las etiquetas de red o reglas de firewall deberían permitir flujo desde cualquier puerto **(¡Ojo! debería ser el 443 nada más porque ahí es donde se conecta por HTTPS, pero así está sirviendo para HTTP/S para pruebas na mas, solo es para tenerlo como consideración.)** los filtros de fuente únicamente indican la dirección por la cuál puede ser accedida, que es relativo al lanzamiento de la máquina por lo tanto se ejecuta en localHost 0.0.0.0 .   
 
 
 # Instrucciones
