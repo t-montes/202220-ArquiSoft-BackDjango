@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import include, path, re_path
 from . import views
 from django.views.static import serve
+from django.conf import settings
 
 
 static_urlpatterns = [
