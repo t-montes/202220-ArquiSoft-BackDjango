@@ -10,7 +10,7 @@ exchange = 'analizando_documentos'
 topic = 'DocumentosTopic'
 
 def analizador_documentos(img):
-
+    print(img)
     connection = pika.BlockingConnection(pika.ConnectionParameters(host=rabbit_host, credentials=pika.PlainCredentials(rabbit_user, rabbit_password)))
     channel = connection.channel()
     channel.exchange_declare(exchange=exchange, exchange_type='topic')
