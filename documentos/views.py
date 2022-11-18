@@ -3,8 +3,6 @@ from .logic.documentos_logic import analizador_documentos
 from django.contrib import messages
 from .forms import DocumentosForm
 from django.http import HttpResponse
-import io
-from PIL import Image
 
 def analizar_documentos(request):
     print (request)
