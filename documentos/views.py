@@ -9,7 +9,8 @@ def analizar_documentos(request):
     if request.method == 'POST':
         print("DOC FILE",request.FILES['docfile'])
         img = request.FILES['docfile']
-        print("DOC FILE . file",img.file)
+        print(type(img))
+        print("DOC FILE . file",img)
 
         analizador_documentos(img.file)
         messages.success(request, 'Documento enviado a analizar')

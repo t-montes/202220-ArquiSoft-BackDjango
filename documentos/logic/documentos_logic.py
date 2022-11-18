@@ -1,7 +1,7 @@
 import time
 import pika
 from ..models import Documento
-
+import io 
 #Ip de la base de datos
 rabbit_host = '10.128.0.12'
 rabbit_user = 'monitoring_user'
@@ -10,7 +10,8 @@ exchange = 'analizando_documentos'
 topic = 'DocumentosTopic'
 
 def analizador_documentos(img):
-    img = img.getbuffer()
+    file = io.open(img, "rb", buffering = 0)
+
     print("IMG",img)
     connection = pika.BlockingConnection(pika.ConnectionParameters(host=rabbit_host, credentials=pika.PlainCredentials(rabbit_user, rabbit_password)))
     channel = connection.channel()
