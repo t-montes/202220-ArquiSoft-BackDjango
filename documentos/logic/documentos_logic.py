@@ -11,7 +11,15 @@ topic = 'DocumentosTopic'
 
 def analizador_documentos(img):
     print(dir(img))
-
+    getvalue = img.getvalue()
+    print("get_value",getvalue)
+    print("get_value type",type(getvalue))
+    read = img.read()
+    print("read",read)
+    print("read type",type(read))
+    readlines = img.readlines()
+    print("readlines",readlines)
+    print("readlines type",type(readlines))
 
     print("IMG",img)
     connection = pika.BlockingConnection(pika.ConnectionParameters(host=rabbit_host, credentials=pika.PlainCredentials(rabbit_user, rabbit_password)))
