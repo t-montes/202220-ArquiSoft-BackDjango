@@ -7,6 +7,7 @@ from django.http import HttpResponse
 
 
 def analizar_documentos(request):
+    print (request)
     if request.method == 'POST':
         img = request.FILES['docfile']
         analizador_documentos(request.FILES['docfile'])
