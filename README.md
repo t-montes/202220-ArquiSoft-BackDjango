@@ -83,10 +83,12 @@ source ~/entornos_virtuales/env_avanzo/bin/activate
 >**NOTA**: asegurese de que el entorno virtual de python esté activo antes de incializar este proceso.
 
 localice el archivo requirements.txt donde se ubican las dependencias y ejecute los siguientes comandos:
-    ```
-    sudo apt-get install gcc
-    pip3 install -r requirements.txt
-    ```
+
+```
+sudo apt-get install gcc
+pip3 install -r requirements.txt
+```
+
 > Esto instalará las dependencias necesarias en el entorno virtual.
 
 ## Conexión con el proyecto Django
@@ -250,6 +252,10 @@ el cuál podrá correr con el siguiente comando:
 
 Se acabó xd.
 
+## Considereciones finales
+ejecute el comando desde el siguiente comando dentro del proyecto Django
+
+    uwsgi --http :8080 --wsgi-file avanzo/wsgi.py
 
 
 
