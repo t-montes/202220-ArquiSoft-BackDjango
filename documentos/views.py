@@ -7,7 +7,9 @@ from django.http import HttpResponse
 
 
 def analizar_documentos(request):
+    print (request)
     if request.method == 'POST':
+        print("AAAAAAAAAAAAAA")
         analizador_documentos(request.FILES['docfile'])
         messages.add_message(request, messages.SUCCESS, 'Successfully analizing the document', )
         return HttpResponse('ok',status=200)
