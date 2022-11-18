@@ -253,9 +253,11 @@ el cuál podrá correr con el siguiente comando:
 Se acabó xd.
 
 ## Consideraciones finales
-ejecute el comando desde el siguiente comando dentro del proyecto Django
+ejecute el comando desde el siguiente comando dentro del proyecto Django, y para Thais.
 
+    source entornos_virtuales/env_avanzo/bin/activate    
     uwsgi --http :8080 --wsgi-file avanzo/wsgi.py
+
 
 
 
