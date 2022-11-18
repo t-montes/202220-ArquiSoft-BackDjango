@@ -10,22 +10,20 @@ exchange = 'analizando_documentos'
 topic = 'DocumentosTopic'
 
 def analizador_documentos(img):
-    print(dir(img))
+
     getvalue = img.getvalue()
-    print("get_value",getvalue)
-    print("get_value type",type(getvalue))
-    read = img.read()
-    print("read",read)
-    print("read type",type(read))
-    readlines = img.readlines()
-    print("readlines",readlines)
-    print("readlines type",type(readlines))
+    # print("get_value",getvalue)
+    # print("get_value type",type(getvalue))
+
+    # read = img.read()
+    # print("read",read)
+    # print("read type",type(read))
 
     print("IMG",img)
     connection = pika.BlockingConnection(pika.ConnectionParameters(host=rabbit_host, credentials=pika.PlainCredentials(rabbit_user, rabbit_password)))
     channel = connection.channel()
     channel.exchange_declare(exchange=exchange, exchange_type='topic')
-    cuerpo = str(img)
+    cuerpo = getvalue
     channel.basic_publish(exchange=exchange, routing_key=topic, body=cuerpo)
     connection.close()
     print('> Sending documents. To exit press CTRL+C')
