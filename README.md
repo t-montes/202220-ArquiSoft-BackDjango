@@ -252,7 +252,7 @@ el cuál podrá correr con el siguiente comando:
 
 Se acabó xd.
 
-## Considereciones finales
+## Consideraciones finales
 ejecute el comando desde el siguiente comando dentro del proyecto Django
 
     uwsgi --http :8080 --wsgi-file avanzo/wsgi.py
