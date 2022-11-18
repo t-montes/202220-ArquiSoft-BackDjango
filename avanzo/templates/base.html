@@ -16,7 +16,7 @@
 
             <nav class="navbar navbar-light bg-light">
                 <a class="navbar-brand" href="/">
-                <img src="/static/media/logo.png" width="45" height="45" alt="">
+                <img src="{% static '/media/logo.png' %}" width="45" height="45" alt="">
                 </a>
             </nav>
 
@@ -59,6 +59,8 @@
         </main>
 
         <!-- TODO: <script> con archivo .js para cargar los datos al localStorage -->
+            
+        <script src="{% static 'js/main.js' %}"></script>
 
     </body>
 
