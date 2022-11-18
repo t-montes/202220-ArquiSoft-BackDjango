@@ -4,8 +4,8 @@ from ..models import Documento
 
 #Ip de la base de datos
 rabbit_host = '10.128.0.12'
-rabbit_user = 'avanzo_user'
-rabbit_password = 'avanzo'
+rabbit_user = 'monitoring_user'
+rabbit_password = 'isis2503'
 exchange = 'analizando_documentos'
 topic = 'DocumentosTopic'
 
