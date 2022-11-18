@@ -1,6 +1,5 @@
 import time
 import pika
-import cv2
 from ..models import Documento
 
 #Ip de la base de datos
@@ -11,8 +10,6 @@ exchange = 'analizando_documentos'
 topic = 'DocumentosTopic'
 
 def analizador_documentos(img):
-    image = cv2.imread(img)
-    print(image)
     connection = pika.BlockingConnection(pika.ConnectionParameters(host=rabbit_host, credentials=pika.PlainCredentials(rabbit_user, rabbit_password)))
     channel = connection.channel()
     channel.exchange_declare(exchange=exchange, exchange_type='topic')
