@@ -1,6 +1,6 @@
 import requests
 from social_core.backends.oauth import BaseOAuth2
-domain="metateoremas.us.auth0.com"
+domain="avanzo-metateoremas.us.auth0.com"
 class Auth0(BaseOAuth2):
     """Auth0 OAuth authentication backend"""
     name = 'auth0'

@@ -154,14 +154,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #Authentication
 # https://metateoremas.auth0.com dominio auth0
 IP_PUBLICA="avanzo.tk" #TODO
-domain="metateoremas.us.auth0.com"
+domain="avanzo-metateoremas.us.auth0.com"
 
 LOGIN_URL = "/login/auth0" 
 LOGIN_REDIRECT_URL = "/" 
-LOGOUT_REDIRECT_URL = "https://"+domain+"/v2/logout?returnTo="+IP_PUBLICA 
+LOGOUT_REDIRECT_URL = "https://"+domain+"/v2/logout?returnTo=http%3A%2F%2F"+IP_PUBLICA 
 SOCIAL_AUTH_TRAILING_SLASH = False # Remove end slash from routes 
 SOCIAL_AUTH_AUTH0_DOMAIN = domain
-SOCIAL_AUTH_AUTH0_KEY = 'vFrSF4ckkpj5snqOF7abWxL4YbBmGGgN' 
-SOCIAL_AUTH_AUTH0_SECRET = 'BWLbocS2hP6NxhVJMiR1ZTsn4bHiZ6kRFJd6RXpUpiWENHQtTHoT3Ghi8ha2RuOX' 
+SOCIAL_AUTH_AUTH0_KEY = 'Bt6bQyNKoby7bxyIpGHWllu9E7vnIFeg' 
+SOCIAL_AUTH_AUTH0_SECRET = 'LFe93gN7784ASYTYW2gjklV2A1S-tp4BXrsfvEnSxTC2O_05sS_qjRi4nWnaTthB' 
 SOCIAL_AUTH_AUTH0_SCOPE = [ 'openid', 'profile','email','role', ] 
 AUTHENTICATION_BACKENDS = { 'avanzo.auth0backend.Auth0','django.contrib.auth.backends.ModelBackend',}
