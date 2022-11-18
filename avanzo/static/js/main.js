@@ -6,7 +6,12 @@ if (firstTime == null) {
     localStorage.setItem('firstTime', 'true');
     console.log("First time");
 } else {
-    console.log("Not first time");
+    if (firstTime == 'true') {
+        localStorage.setItem('firstTime', 'false');
+    } else {
+        localStorage.setItem('firstTime', 'true');
+    }
+    console.log("Not first time; changed");
 }
 
 console.log("DJango Javascript is working 2");
