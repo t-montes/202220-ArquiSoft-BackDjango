@@ -153,7 +153,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #Authentication
 # https://metateoremas.auth0.com dominio auth0
-IP_PUBLICA="avanzo.tk" #TODO
+IP_PUBLICA="avanzo.tk"
 domain="avanzo-metateoremas.us.auth0.com"
 
 LOGIN_URL = "/login/auth0" 
