@@ -20,7 +20,7 @@ def creditos_list(request):
             }
             return render(request, 'creditos_list.html', context)
         else:
-            return render(request, 'not_found.html')
+            return render(request, '404.html')
     else:
         return render(request, 'unauthorized.html')
 
@@ -36,7 +36,7 @@ def credito_detail(request, id=0):
             }
             return render(request, 'credito_detail.html', context)
         else:
-            return render(request, 'not_found.html')
+            return render(request, '404.html')
     else:
         return render(request, 'unauthorized.html')
 
@@ -53,7 +53,7 @@ def credito_update(request):
             messages.add_message(request, messages.SUCCESS, 'Credito actualizado correctamente')
             return HttpResponse(status=200)
         else:
-            return render(request, 'not_found.html')
+            return render(request, '404.html')
     else:
         return render(request, 'unauthorized.html')
 
@@ -76,7 +76,7 @@ def credito_create(request):
             }
             return render(request, 'credito_create.html', context)
         else:
-            return render(request, 'not_found.html')
+            return render(request, '404.html')
     else:
         return render(request, 'unauthorized.html')
 
