@@ -17,7 +17,7 @@ def creditos_list(request):
             # 'role': role
         }
         print("parte2", creditos)
-        return render(request, 'creditos/creditos_list.html', context)
+        return render(request, 'creditos_list.html', context)
     else:
         return HttpResponse("Not allowed method", status=400)
 
@@ -30,7 +30,7 @@ def credito_detail(request, id=0):
             'credito': credito,
             # 'role': role
         }
-        return render(request, 'creditos/credito_detail.html', context)
+        return render(request, 'credito_detail.html', context)
     else:
         return HttpResponse("Not allowed method", status=400)
 
