@@ -4,10 +4,6 @@
     <div style=" display: flex; align-items: center; justify-content: center;" class="login-box auth0-box before">
         {% if user.is_authenticated %}
         <p class="login-box-msg">Bienvenido {{ user.username }}</p>
-        <br>
-        <br>
-        <pre>{{JSON.stringify(user, undefined, 2)}}</pre>
-        <p>{{JSON.stringify(user, undefined, 2)}}</p>
         {% else %}
         <p style="font-size: 20px; color: #000000; font-weight: bold;">Bienvenido a Avanzo</p>
         {% endif %}
