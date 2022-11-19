@@ -46,9 +46,9 @@ def callback(ch, method, properties, body):
     payload = body.decode('utf-8')
     payload = ast.literal_eval(payload)
     with open("received.png", "wb") as f:
-            f.write(payload)
-        print(type(payload))
-        print("Data Received : {}".format(payload))
+        f.write(payload)
+    print(type(payload))
+    print("Data Received : {}".format(payload))
     
     image = Image.open(io.BytesIO(body))    
     nombre = image.filename
