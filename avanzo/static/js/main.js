@@ -57,6 +57,7 @@ if (credit_create_data != null) {
     console.log("Crédito recuperado y enviado");
     console.log(resp);
     // eliminar datos del formulario
+    localStorage.removeItem('credit_create_data');
 } else {
     console.log("No hay datos almacenados para enviar");
 }
