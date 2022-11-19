@@ -44,19 +44,11 @@ checkCredit = () => {
     
         credit_create_data = JSON.parse(credit_create_data);
         console.log("Se recuperaron datos para enviar", credit_create_data);
-    
-        var final_form = new FormData();
-        final_form.append("monto", credit_create_data.monto);
-        final_form.append("cuotas", credit_create_data.cuotas);
-        final_form.append("estado", "PENDIENTE");
-        final_form.append("csrfmiddlewaretoken", credit_create_data.csrfmiddlewaretoken);
         
-        console.log("Modificado", final_form);
-    
         var xhr = new window.XMLHttpRequest();
         xhr.open("POST", "/creditos/creditocreate/", true);
         xhr.setRequestHeader('Content-Type', 'application/json');
-        resp = xhr.send(final_form);
+        resp = xhr.send(credit_create_data);
         console.log("Crédito recuperado y enviado");
         console.log(resp);
         // eliminar datos del formulario
