@@ -41,6 +41,7 @@ def delete(request,id):
     else :
         return HttpResponse('Documento eliminado',status=200)
 def create(request):
+    print(request.method)
     if request.method == 'POST':
         print("a")
         form = DocumentosForm(request.POST, request.FILES)
