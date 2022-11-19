@@ -9,6 +9,7 @@ import json
 
 def esta_funcionando_papi(request):
     # role = getRole(request)
+    print("a")
     if request.method == 'GET':
         creditos = get_creditos()
         context = {
