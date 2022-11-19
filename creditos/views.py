@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
 from avanzo.auth0backend import getRole
 from .logic.credito_logic import update_credit, create_credit, get_creditos, get_credito
-from .forms import CreditoForm
+from .forms import CreditoCreateForm, CreditoUpdateForm
 import json
 
 @login_required
@@ -20,7 +20,7 @@ def creditos_list(request):
             }
             return render(request, 'creditos_list.html', context)
         else:
-            return HttpResponse("Not allowed method", status=400)
+            return render(request, 'not_found.html')
     else:
         return render(request, 'unauthorized.html')
 
@@ -36,7 +36,7 @@ def credito_detail(request, id=0):
             }
             return render(request, 'credito_detail.html', context)
         else:
-            return HttpResponse("Not allowed method", status=400)
+            return render(request, 'not_found.html')
     else:
         return render(request, 'unauthorized.html')
 
@@ -53,7 +53,7 @@ def credito_update(request):
             messages.add_message(request, messages.SUCCESS, 'Credito actualizado correctamente')
             return HttpResponse(status=200)
         else:
-            return HttpResponse("Not allowed method", status=400)
+            return render(request, 'not_found.html')
     else:
         return render(request, 'unauthorized.html')
 
@@ -61,7 +61,6 @@ def credito_update(request):
 def credito_create(request):
     role = getRole(request)
     if role in ["ADMIN", "ANALISTA", "EMPLEADO"]:
-        print("create-parte1")
         if request.method == 'POST':
             # print("request BODY", request.body)
             # request.body to dict
@@ -71,14 +70,13 @@ def credito_create(request):
             messages.add_message(request, messages.SUCCESS, 'Credito creado correctamente')
             return HttpResponse(status=200)
         elif request.method == 'GET':
-            form = CreditoForm()
+            form = CreditoCreateForm()
             context = {
                 'form': form,
             }
-            print("create-parte2; empty form", form)
             return render(request, 'credito_create.html', context)
         else:
-            return HttpResponse("Not allowed method", status=400)
+            return render(request, 'not_found.html')
     else:
         return render(request, 'unauthorized.html')
 
