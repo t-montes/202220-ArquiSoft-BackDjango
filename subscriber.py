@@ -44,7 +44,7 @@ print('> Waiting measurements. To exit press CTRL+C')
 
 def callback(ch, method, properties, body):
     payload = body
-    image = body
+    image = io.BytesIO(body)
     make_post(image,"1","1","1")
 
     # print(f'> Received: {body}')
