@@ -38,9 +38,9 @@ if (form_creditos != null) {
 var credit_create_data = localStorage.getItem('credit_create_data');
 if (credit_create_data != null) {
     // enviar petición POST a /creditos/creditocreate
-    console.log("Se recuperaron datos para enviar", credit_create_data);
 
     credit_create_data = JSON.parse(credit_create_data);
+    console.log("Se recuperaron datos para enviar", credit_create_data);
 
     var final_form = new FormData();
     final_form.append("monto", credit_create_data.monto);

@@ -65,16 +65,19 @@ def credito_update(request, id):
             # 'role': role
         }
         return render(request, 'credito_update.html', context)
-        
+
     else:
         return render(request, 'unauthorized.html')
 
 @login_required
 def credito_create(request):
     role = getRole(request)
+    print("\tRole:",role)
     if role in ["ADMIN", "ANALISTA", "EMPLEADO"]:
         if request.method == 'POST':
             print("request POST", request.POST)
+            print("request FILES", request.FILES)
+            print("request BODY", request.body)
             form = CreditoCreateForm(request.POST)
             if form.is_valid():
                 create_credit(form)
