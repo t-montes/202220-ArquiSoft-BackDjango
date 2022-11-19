@@ -62,6 +62,7 @@ def credito_create(request):
     role = getRole(request)
     if role in ["ADMIN", "ANALISTA", "EMPLEADO"]:
         if request.method == 'POST':
+            print("request POST", request.POST)
             form = CreditoCreateForm(request.POST)
             if form.is_valid():
                 create_credit(form)
