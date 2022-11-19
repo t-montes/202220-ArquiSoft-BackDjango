@@ -4,6 +4,7 @@ from django.contrib import messages
 from .forms import DocumentosForm
 from django.http import HttpResponse
 from .logic.documentos_logic import get_documento
+from .logic.documentos_logic import delete_documento
 
 def analizar_documentos(request):
     print (request)
@@ -33,3 +34,10 @@ def documento(request,id):
     else :
         print("hola")
         return render(request, 'documento.html', {'documento': documento})
+def delete(request,id):
+    documento = delete_documento(id)
+    if documento is None:
+        return HttpResponse('Documento no encontrado',status=404)
+    else :
+        return HttpResponse('Documento eliminado',status=200)
+    

@@ -35,7 +35,10 @@ def get_documentos ():
 def get_documento (id):
     documento = Documento.objects.get(pk=id)
     return (documento)
-   
+
+def delete_documento(id):
+    documento = Documento.objects.get(pk=id)
+    documento.delete()
 
 def get_documento_by_num_documento (num_documento):
     try:
