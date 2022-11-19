@@ -9,6 +9,7 @@ import json
 
 # @login_required
 def creditos_list(request):
+    print("hola")
     # role = getRole(request)
     if request.method == 'GET':
         creditos = get_creditos()
