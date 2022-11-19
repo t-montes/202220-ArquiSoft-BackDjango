@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
+from django.template import RequestContext
 from django.contrib import messages
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -21,7 +22,9 @@ def creditos_list(request):
         else:
             return HttpResponse("Not allowed method", status=400)
     else:
-        return render(request, 'unauthorized.html')
+        response = render_to_response('unauthorized.html', {}, context_instance=RequestContext(request))
+        response.status_code = 401
+        return response
 
 @login_required
 def credito_detail(request, id=0):
