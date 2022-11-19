@@ -31,4 +31,4 @@ def documento(request,id):
         return HttpResponse('Documento no encontrado',status=404)
     else :
         print("hola")
-        return render(request, 'documento.html', {'documento': 1})
+        return render(request, 'documento.html', {'documento': "1"})
