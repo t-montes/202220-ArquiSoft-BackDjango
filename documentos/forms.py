@@ -5,15 +5,4 @@ class DocumentosForm(forms.ModelForm):
     docfile = forms.FileField(label='Seleccione el archivo')
     class Meta:
         model = Documento
-        fields = [
-            'nombre',
-            'num_documento',
-            'path_image',
-            'imagen'
-        ]
-        labels = {
-            'nombre': 'Nombre',
-            'num_documento': 'Num_documento',
-            'path_image': 'Path_image',
-            'imagen': 'Imagen'
-        }
+        fields = "__all__"
