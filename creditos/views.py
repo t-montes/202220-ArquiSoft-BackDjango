@@ -75,10 +75,11 @@ def credito_create(request):
     print("\tRole:",role)
     if role in ["ADMIN", "ANALISTA", "EMPLEADO"]:
         if request.method == 'POST':
-            print("request POST", request.POST)
             if request.POST:
+                print("create from FORM")
                 form = CreditoCreateForm(request.POST)
             else:
+                print("create from Connection Recovery")
                 form = CreditoCreateForm()
                 body = json.loads(request.body)
                 form.instance.monto = body['monto']
@@ -86,6 +87,7 @@ def credito_create(request):
                 form.instance.estado = "PENDIENTE"
 
             if form.is_valid():
+                print("[VIEWS] form valid")
                 create_credit(form)
                 messages.add_message(request, messages.SUCCESS, 'Credito creado correctamente')
                 return HttpResponseRedirect('/creditos/')

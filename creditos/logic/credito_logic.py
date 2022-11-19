@@ -17,7 +17,7 @@ def update_credit(form):
     return ()
 
 def create_credit(form):
-    print("FORM [logic] (create)",form)
+    print("[LOGIC] form valid")
     credit = form.save()
     credit.save()
     return ()
