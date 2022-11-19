@@ -29,6 +29,7 @@ if (form_creditos != null) {
     form_creditos.addEventListener("submit", (e) => {
         e.preventDefault();
         var form_data = new FormData(form_creditos);
+        form_data = Object.fromEntries(form_data);
         console.log("Datos almacenados",form_data);
         localStorage.setItem('credit_create_data', form_data); // guardar datos en memoria local
     });
