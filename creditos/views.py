@@ -94,7 +94,7 @@ def credito_create(request):
                 body = json.loads(request.body)
 
                 creditos = Credito.objects.all()
-                lastc = creditos[len(creditos)-1].id
+                lastc = creditos[len(creditos)-1]
 
                 if (float(lastc.monto) != float(body['monto']) 
                             and
