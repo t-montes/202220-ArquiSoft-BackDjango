@@ -51,7 +51,7 @@ if (credit_create_data != null) {
     console.log("Modificado", final_form);
 
     var xhr = new window.XMLHttpRequest();
-    xhr.open("POST", "/creditos/creditocreate", true);
+    xhr.open("POST", "/creditos/creditocreate/", true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     resp = xhr.send(final_form);
     console.log("Crédito recuperado y enviado");
