@@ -32,7 +32,6 @@ if (form_creditos != null) {
         var form_data_json = JSON.stringify(Object.fromEntries(form_data));
         localStorage.setItem('credit_create_data', form_data_json); // guardar datos en memoria local
         console.log("Datos guardados en memoria local", form_data_json);
-        checkCredit();
     });
 }
 
@@ -43,9 +42,7 @@ checkCredit = () => {
     if (credit_create_data != null) {
         // enviar petición POST a /creditos/creditocreate
     
-        credit_create_data = JSON.parse(credit_create_data);
         console.log("Se recuperaron datos para enviar", credit_create_data);
-        
         var xhr = new window.XMLHttpRequest();
         xhr.open("POST", "/creditos/creditocreate/", true);
         xhr.setRequestHeader('Content-Type', 'application/json');
@@ -58,3 +55,5 @@ checkCredit = () => {
         console.log("No hay datos almacenados para enviar");
     }    
 }
+
+checkCredit();
