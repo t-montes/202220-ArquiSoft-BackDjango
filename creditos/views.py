@@ -90,6 +90,8 @@ def credito_create(request):
                 form.instance.csrfmiddlewaretoken = body['csrfmiddlewaretoken']
 
             print("FORM",form)
+            print("dir-form",dir(form))
+            print("form.instance",form.instance)
             if form.is_valid():
                 print("[VIEWS] form valid")
                 create_credit(form)
