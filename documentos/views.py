@@ -30,4 +30,4 @@ def documento(request,id):
     if documento is None:
         return HttpResponse('Documento no encontrado',status=404)
     else :
-        return render(request, 'documentos/templates/documento.html', {'documento': documento})
+        return render(request, 'documento.html', {'documento': documento})
