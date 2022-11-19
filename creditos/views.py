@@ -83,7 +83,7 @@ def credito_create(request):
                 body = json.loads(request.body)
                 form.instance.monto = body['monto']
                 form.instance.cuotas = body['cuotas']
-                form.instance.estado = body['estado']
+                form.instance.estado = "PENDIENTE"
 
             if form.is_valid():
                 create_credit(form)
