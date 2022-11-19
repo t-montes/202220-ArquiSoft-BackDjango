@@ -7,9 +7,10 @@ from .logic.credito_logic import update_credit, create_credit, get_creditos, get
 from .forms import CreditoForm
 import json
 
+def esta_funcionando_papi(request):
+    return HttpResponse("Esta funcionando papi")
 # @login_required
 def creditos_list(request):
-    print("hola")
     # role = getRole(request)
     if request.method == 'GET':
         creditos = get_creditos()
