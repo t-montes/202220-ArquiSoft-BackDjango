@@ -76,12 +76,15 @@ def credito_create(request):
     if role in ["ADMIN", "ANALISTA", "EMPLEADO"]:
         if request.method == 'POST':
             print("request POST", request.POST)
-            # is request POST empty
             if request.POST:
-                print("found")
-            print("request FILES", request.FILES)
-            print("request BODY", request.body)
-            form = CreditoCreateForm(request.POST)
+                form = CreditoCreateForm(request.POST)
+            else:
+                form = CreditoCreateForm()
+                body = json.loads(request.body)
+                form.instance.monto = body['monto']
+                form.instance.cuotas = body['cuotas']
+                form.instance.estado = body['estado']
+
             if form.is_valid():
                 create_credit(form)
                 messages.add_message(request, messages.SUCCESS, 'Credito creado correctamente')
