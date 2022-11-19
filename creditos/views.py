@@ -84,8 +84,8 @@ def credito_create(request):
                 print("create from Connection Recovery")
                 form = CreditoCreateForm()
                 body = json.loads(request.body)
-                form.instance.monto = body['monto']
-                form.instance.cuotas = body['cuotas']
+                form.instance.monto = float(body['monto'])
+                form.instance.cuotas = int(body['cuotas'])
                 form.instance.estado = "PENDIENTE"
                 form.instance.csrfmiddlewaretoken = body['csrfmiddlewaretoken']
 
