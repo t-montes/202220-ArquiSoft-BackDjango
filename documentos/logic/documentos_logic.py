@@ -32,7 +32,13 @@ def analizador_documentos(img):
 def get_documentos ():
     queryset = Documento.objects.all()
     return (queryset)
-
+def get_documento (id):
+    try:
+        documento = Documento.objects.get(pk=id)
+        return (documento)
+    except:
+        documento = None
+        return (documento)
 
 def get_documento_by_num_documento (num_documento):
     try:

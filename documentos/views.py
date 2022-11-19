@@ -3,7 +3,7 @@ from .logic.documentos_logic import analizador_documentos
 from django.contrib import messages
 from .forms import DocumentosForm
 from django.http import HttpResponse
-
+import logic.documentos_logic as logic
 def analizar_documentos(request):
     print (request)
     if request.method == 'POST':
@@ -25,8 +25,7 @@ def analizar_documentos(request):
     return HttpResponse('error no es post',status=404)
 
 def documento(request,id):
-    documento = documento.objects.get(pk=id)
-    print("a")
+    documento = logic.get_documento(id)
     if documento is None:
         return HttpResponse('Documento no encontrado',status=404)
     else :
