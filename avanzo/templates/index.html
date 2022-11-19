@@ -5,9 +5,9 @@
         {% if user.is_authenticated %}
         <p class="login-box-msg">Bienvenido {{ user.username }}</p>
         <br>
-        <p>{{ user.email }}</p>
         <br>
-        <p>end print</p>
+        <pre>{{JSON.stringify(user, undefined, 2)}}</pre>
+        <p>{{JSON.stringify(user, undefined, 2)}}</p>
         {% else %}
         <p style="font-size: 20px; color: #000000; font-weight: bold;">Bienvenido a Avanzo</p>
         {% endif %}
