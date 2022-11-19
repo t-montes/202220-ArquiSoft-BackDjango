@@ -25,6 +25,7 @@ if (form_creditos != null) {
         e.preventDefault();
         console.log(form_creditos);
         var form_data = new FormData(form_creditos);
+        console.log(form_data);
         var form_data_json = JSON.stringify(Object.fromEntries(form_data));
         localStorage.setItem('credit_create_data', form_data_json);
     });
