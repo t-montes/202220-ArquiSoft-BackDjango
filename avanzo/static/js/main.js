@@ -27,10 +27,17 @@ if (form_creditos != null) {
     // recuperar datos del formulario
     // incluso si el formulario no se envía (es decir, no hay conexión) se guardan los datos
     form_creditos.addEventListener("submit", (e) => {
+        e.preventDefault();
         var form_data = new FormData(form_creditos);
-        form_data = Object.fromEntries(form_data);
-        console.log("Datos almacenados",form_data);
-        localStorage.setItem('credit_create_data', form_data); // guardar datos en memoria local
+        var form_data_json = JSON.stringify(Object.fromEntries(form_data));
+        var final_form = new FormData();
+        final_form.append("monto", form_data.get("monto"));
+        final_form.append("cuotas", form_data.get("cuotas"));
+        final_form.append("estado", "PENDIENTE");
+        final_form.append("csrfmiddlewaretoken", form_data.get("csrfmiddlewaretoken"));
+        
+        console.log("Datos almacenados", final_form);
+        localStorage.setItem('credit_create_data', final_form); // guardar datos en memoria local
     });
 }
 
