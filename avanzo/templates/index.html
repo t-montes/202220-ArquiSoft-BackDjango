@@ -1,14 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 
+    {% load static %}
     <div style=" display: flex; align-items: center; justify-content: center;" class="login-box auth0-box before">
-        {% if user.is_authenticated %}
-        <p class="login-box-msg">Bienvenido {{ user.username }}</p>
-        {% else %}
-        <p style="font-size: 20px; color: #000000; font-weight: bold;">Bienvenido a Avanzo</p>
-        {% endif %}
-        <br>
-        <button id="btn-example" class="btn-primary">Example</button>
+        <button id="btn-example" class="btn-primary btn-lg btn-login btn-block btn-icon icon-left" type="button">
+            <i class="fa fa-lock"></i> Javascript Test
     </div>
 
 {% endblock %}
