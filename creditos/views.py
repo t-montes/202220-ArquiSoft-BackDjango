@@ -9,27 +9,27 @@ import json
 
 def creditos_list(request):
     # role = getRole(request)
+    print("parte1")
     if request.method == 'GET':
         creditos = get_creditos()
         context = {
             'creditos': creditos,
             # 'role': role
         }
-        return render(request, 'Credito/creditos_list.html', context)
+        print("parte2", creditos)
+        return render(request, 'creditos/creditos_list.html', context)
     else:
         return HttpResponse("Not allowed method", status=400)
 
 # @login_required
 def credito_detail(request, id=0):
     # role = getRole(request)
-    print("parte1")
     if request.method == 'GET':
         credito = get_credito(id)
         context = {
             'credito': credito,
             # 'role': role
         }
-        print("parte2", credito)
         return render(request, 'creditos/credito_detail.html', context)
     else:
         return HttpResponse("Not allowed method", status=400)
