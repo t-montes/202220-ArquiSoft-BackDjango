@@ -23,3 +23,11 @@ def analizar_documentos(request):
     }
     
     return HttpResponse('error no es post',status=404)
+
+def documento(request,id):
+    documento = documento.objects.get(pk=id)
+
+    if documento is None:
+        return HttpResponse('Documento no encontrado',status=404)
+    else :
+        return render(request, 'documentos/documento.html', {'documento': documento})
