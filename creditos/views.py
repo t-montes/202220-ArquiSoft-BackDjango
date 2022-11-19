@@ -80,26 +80,27 @@ def credito_create(request):
             if request.POST:
                 print("create from FORM")
                 form = CreditoCreateForm(request.POST)
+                if form.is_valid():
+                    print("[VIEWS] form valid")
+                    create_credit(form)
+                    messages.add_message(request, messages.SUCCESS, 'Credito creado correctamente')
+                    return HttpResponseRedirect('/creditos/')
+                else:
+                    print("form invalid")
+                    print(form.errors)
+
             else:
                 print("create from Connection Recovery")
                 form = CreditoCreateForm()
                 body = json.loads(request.body)
-                form.instance.monto = float(body['monto'])
-                form.instance.cuotas = int(body['cuotas'])
-                form.instance.csrfmiddlewaretoken = body['csrfmiddlewaretoken']
-                form.clean()
-
-            print("FORM",form)
-            print("dir-form",dir(form))
-            print("form.instance",form.instance)
-            if form.is_valid():
-                print("[VIEWS] form valid")
-                create_credit(form)
+                credit = Credito()
+                credit.monto = body['monto']
+                credit.cuotas = body['cuotas']
+                credit.estado = "PENDIENTE"
+                credit.save()
                 messages.add_message(request, messages.SUCCESS, 'Credito creado correctamente')
                 return HttpResponseRedirect('/creditos/')
-            else:
-                print("form invalid")
-                print(form.errors)
+
         elif request.method == 'GET':
             form = CreditoCreateForm()
         else:
