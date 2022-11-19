@@ -47,7 +47,7 @@ def callback(ch, method, properties, body):
     image = io.BytesIO(body)
     
     make_post(image,"1","1","1")
-
+    
     # print(f'> Received: {body}')
     payload['nombre'] = payload['nombre'].lower()
     if payload['nombre'] not in ['cedula', 'certificacion_bancaria', 'certificacion_laboral', 'comprobante_de_pago', 'nomina']:
