@@ -25,17 +25,17 @@
                     <table class="table table-hover">
                         <thead>
                         <tr style="color:#0E2EB0">
-                            <th>Variable</th>
+                            <th>Crédito</th>
                         </tr>
                         </thead>
                         <tbody>
 
-                        {% for variable in variable_list %}
+                        {% for credito in creditos %}
                         <tr>
                             <td class="d-flex justify-content-between">
-                                {{ variable.name }}
+                                {{ credito.name }}
                                 <button type="button" class="btn btn-primary waves-effect waves-light"
-                                        onClick=" window.location.href='/variable/{{ variable.id }}' ">
+                                        onClick=" window.location.href='/creditos/{{ credito.id }}' ">
                                     Detail
                                 </button>
                             </td>

@@ -25,7 +25,11 @@ def credito_detail(request, id=0):
     # role = getRole(request)
     if request.method == 'GET':
         credito = get_credito(id)
-        return HttpResponse(credito, status=200)
+        context = {
+            'credito': credito,
+            # 'role': role
+        }
+        return render(request, 'Credito/credito_detail.html', context)
     else:
         return HttpResponse("Not allowed method", status=400)
 
@@ -47,13 +51,19 @@ def credito_update(request):
 def credito_create(request):
     # role = getRole(request)
     if request.method == 'POST':
-        print("request BODY", request.body)
+        # print("request BODY", request.body)
         # request.body to dict
         body = request.body.decode('utf-8')
         body = json.loads(body)
         create_credit(body)
         messages.add_message(request, messages.SUCCESS, 'Credito creado correctamente')
         return HttpResponse(status=200)
+    elif request.method == 'GET':
+        form = CreditoForm()
+        context = {
+            'form': form,
+        }
+        return render(request, 'Credito/credito_create.html', context)
     else:
         return HttpResponse("Not allowed method", status=400)
 
