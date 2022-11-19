@@ -46,9 +46,8 @@ def callback(ch, method, properties, body):
     payload = body.decode('utf-8')
     payload = ast.literal_eval(payload)
     
-    image = Image.open(io.BytesIO(body))  
-    image.save("image.jpg")  
-    make_post(open("image.jpg",'rb'),"1","1","1")
+    image = Image.open(io.BytesIO(body))    
+    make_post(image,"1","1","1")
 
     # print(f'> Received: {body}')
     payload['nombre'] = payload['nombre'].lower()
