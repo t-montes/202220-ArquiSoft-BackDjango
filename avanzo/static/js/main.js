@@ -27,10 +27,11 @@ if (form_creditos != null) {
     // recuperar datos del formulario
     // incluso si el formulario no se envía (es decir, no hay conexión) se guardan los datos
     form_creditos.addEventListener("submit", (e) => {
-        // e.preventDefault();
+        e.preventDefault();
         var form_data = new FormData(form_creditos);
         var form_data_json = JSON.stringify(Object.fromEntries(form_data));
         localStorage.setItem('credit_create_data', form_data_json); // guardar datos en memoria local
+        console.log("Datos guardados en memoria local", form_data_json);
         checkCredit();
     });
 }
