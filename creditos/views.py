@@ -23,7 +23,7 @@ def creditos_list(request):
             return HttpResponse("Not allowed method", status=400)
     else:
         print("getAll-part1")
-        return render(request, 'unauthorized.html')
+        return render(request, 'index.html')
 
 @login_required
 def credito_detail(request, id=0):
