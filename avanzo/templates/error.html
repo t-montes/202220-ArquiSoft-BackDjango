@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    {% load static %}
+    <div style=" display: flex; align-items: center; justify-content: center;">
+        <!-- Unauthorized page -->
+        <img src="{% static 'media/something-went-wrong.jpg' %}" alt="Unauthorized" style="width: 100%; height: 100%;">
+    </div>
+
+{% endblock %}
