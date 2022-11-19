@@ -44,7 +44,8 @@ def create(request):
     if request.method == 'POST':
         print("a")
         print(request.POST)
-        form = DocumentosForm(request.POST)
+        print(request.FILES)
+        form = DocumentosForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return HttpResponse('Documento creado',status=200)
