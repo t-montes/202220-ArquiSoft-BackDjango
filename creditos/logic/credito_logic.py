@@ -21,13 +21,8 @@ def update_credit(body:dict):
     # print("Crédito:",credit)
     return ()
 
-def create_credit(body:dict):
-    # print("BODY create [logic]",body)
-    credit = Credito()
-    credit.monto = body['monto']
-    credit.cuotas = body['cuotas']
-    credit.estado = body['estado']
+def create_credit(form):
+    print("FORM [logic]",form)
+    credit = form.save()
     credit.save()
-    # print("Creado con éxito [logic]")
-    # print("Crédito:",credit)
     return ()

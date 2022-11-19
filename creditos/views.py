@@ -62,16 +62,24 @@ def credito_create(request):
     role = getRole(request)
     if role in ["ADMIN", "ANALISTA", "EMPLEADO"]:
         if request.method == 'POST':
-            
-            return HttpResponse(status=200)
+            print("request POST", request.POST)
+            form = CreditoCreateForm(request.POST)
+            if form.is_valid():
+                create_credit(form)
+                messages.add_message(request, messages.SUCCESS, 'Credito creado correctamente')
+                return HttpResponseRedirect('/creditos/')
+            else:
+                print(form.errors)
         elif request.method == 'GET':
             form = CreditoCreateForm()
-            context = {
-                'form': form,
-            }
-            return render(request, 'credito_create.html', context)
         else:
             return render(request, '404.html')
+
+        context = {
+            'form': form,
+        }
+        return render(request, 'credito_create.html', context)
+
     else:
         return render(request, 'unauthorized.html')
 
