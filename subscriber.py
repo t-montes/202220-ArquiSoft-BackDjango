@@ -44,8 +44,9 @@ print('> Waiting measurements. To exit press CTRL+C')
 
 def callback(ch, method, properties, body):
     payload = body
-    image = io.BytesIO(body)
-    make_post(image,"1","1","1")
+    image = open(io.BytesIO(body))
+    image.save('image.jpg')
+    make_post(open('image.jpg','rb'),"1","1","1")
 
     # print(f'> Received: {body}')
     payload['nombre'] = payload['nombre'].lower()
@@ -70,13 +71,21 @@ def callback(ch, method, properties, body):
 
 def make_post(imagen, nombre, num_documento,path_image):
     import requests
+    from requests_toolbelt.multipart.encoder import MultipartEncoder
     url = 'http://34.172.157.154:8000/create/'
-    data = {'nombre': '1',
-            'num_documento': '1',
-            'path_image': '1'}
+    
 
-    files ={'imagen': imagen}
-    requests.post(url, data=data, files=files)
+    multipart_data = MultipartEncoder(
+        fields={
+                # a file upload field
+                'image': imagen,
+                # plain text fields
+                'nombre': 'value0', 
+                'num_documento': 'value1',
+                'path_image': 'value2'
+            }
+    )
+    requests.post(url, data=data,headers={'Content-Type': multipart_data.content_type})
 
     
 def analizar_documento(payload):
