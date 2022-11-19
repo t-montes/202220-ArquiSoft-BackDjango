@@ -88,9 +88,11 @@ def credito_create(request):
                 form.instance.cuotas = int(body['cuotas'])
                 form.instance.estado = "PENDIENTE"
                 form.instance.csrfmiddlewaretoken = body['csrfmiddlewaretoken']
+                form.clean()
 
             print("FORM",form)
             print("dir-form",dir(form))
+            print("cleaned-data",form.cleaned_data)
             print("form.instance",form.instance)
             if form.is_valid():
                 print("[VIEWS] form valid")
