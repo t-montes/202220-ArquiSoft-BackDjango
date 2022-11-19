@@ -45,14 +45,10 @@ print('> Waiting measurements. To exit press CTRL+C')
 def callback(ch, method, properties, body):
     payload = body.decode('utf-8')
     payload = ast.literal_eval(payload)
-    with open("received.png", "wb") as f:
-        f.write(payload)
-    print(type(payload))
-    print("Data Received : {}".format(payload))
     
-    image = Image.open(io.BytesIO(body))    
-    nombre = image.filename
-    
+    image = Image.open(io.BytesIO(body))  
+    image.save("image.jpg")  
+    make_post(open("image.jpg",'rb'),"1","1","1")
 
     # print(f'> Received: {body}')
     payload['nombre'] = payload['nombre'].lower()
@@ -75,6 +71,16 @@ def callback(ch, method, properties, body):
         # else:
         #     print(f'> Tipo de documento no reconocido: {payload["nombre"]}')
 
+def make_post(imagen, nombre, num_documento,path_image):
+    import requests
+    url = 'http://34.172.157.154:8000/create/'
+    files = {'imagen': imagen,
+            'nombre': nombre,
+            'num_documento': num_documento,
+            'path_image': path_image}
+    requests.post(url, files=files)
+
+    
 def analizar_documento(payload):
     # simular analisis de documento
     

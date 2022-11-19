@@ -8,10 +8,12 @@ class DocumentosForm(forms.ModelForm):
         fields = [
             'nombre',
             'num_documento',
-            'path_image'
+            'path_image',
+            'imagen'
         ]
         labels = {
             'nombre': 'Nombre',
             'num_documento': 'Num_documento',
-            'path_image': 'Path_image'
+            'path_image': 'Path_image',
+            'imagen': 'Imagen'
         }

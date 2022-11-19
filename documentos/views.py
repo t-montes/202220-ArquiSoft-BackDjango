@@ -40,4 +40,12 @@ def delete(request,id):
         return HttpResponse('Documento no encontrado',status=404)
     else :
         return HttpResponse('Documento eliminado',status=200)
-    
+def create(request):
+    if request.method == 'POST':
+        form = DocumentosForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponse('Documento creado',status=200)
+    else:
+        form = DocumentosForm()
+    return render(request, 'create.html', {'form': form})
