@@ -10,15 +10,18 @@ import json
 @login_required
 def creditos_list(request):
     role = getRole(request)
-    if request.method == 'GET':
-        creditos = get_creditos()
-        context = {
-            'creditos': creditos,
-            # 'role': role
-        }
-        return render(request, 'creditos_list.html', context)
+    if role in ["ADMIN", "ANALISTA"]:
+        if request.method == 'GET':
+            creditos = get_creditos()
+            context = {
+                'creditos': creditos,
+                # 'role': role
+            }
+            return render(request, 'creditos_list.html', context)
+        else:
+            return HttpResponse("Not allowed method", status=400)
     else:
-        return HttpResponse("Not allowed method", status=400)
+        return HttpResponse("Unauthorized", status=401)
 
 @login_required
 def credito_detail(request, id=0):
@@ -39,36 +42,42 @@ def credito_detail(request, id=0):
 @login_required
 def credito_update(request):
     role = getRole(request)
-    if request.method == 'PUT':
-        print("request BODY", request.body)
-        # request.body to dict
-        body = request.body.decode('utf-8')
-        body = json.loads(body)
-        update_credit(body)
-        messages.add_message(request, messages.SUCCESS, 'Credito actualizado correctamente')
-        return HttpResponse(status=200)
+    if role in ["ADMIN", "ANALISTA"]:
+        if request.method == 'PUT':
+            print("request BODY", request.body)
+            # request.body to dict
+            body = request.body.decode('utf-8')
+            body = json.loads(body)
+            update_credit(body)
+            messages.add_message(request, messages.SUCCESS, 'Credito actualizado correctamente')
+            return HttpResponse(status=200)
+        else:
+            return HttpResponse("Not allowed method", status=400)
     else:
-        return HttpResponse("Not allowed method", status=400)
+        return HttpResponse("Unauthorized", status=401)
 
 @login_required
 def credito_create(request):
     role = getRole(request)
-    print("create-parte1")
-    if request.method == 'POST':
-        # print("request BODY", request.body)
-        # request.body to dict
-        body = request.body.decode('utf-8')
-        body = json.loads(body)
-        create_credit(body)
-        messages.add_message(request, messages.SUCCESS, 'Credito creado correctamente')
-        return HttpResponse(status=200)
-    elif request.method == 'GET':
-        form = CreditoForm()
-        context = {
-            'form': form,
-        }
-        print("create-parte2; empty form", form)
-        return render(request, 'credito_create.html', context)
+    if role in ["ADMIN", "ANALISTA", "EMPLEADO"]:
+        print("create-parte1")
+        if request.method == 'POST':
+            # print("request BODY", request.body)
+            # request.body to dict
+            body = request.body.decode('utf-8')
+            body = json.loads(body)
+            create_credit(body)
+            messages.add_message(request, messages.SUCCESS, 'Credito creado correctamente')
+            return HttpResponse(status=200)
+        elif request.method == 'GET':
+            form = CreditoForm()
+            context = {
+                'form': form,
+            }
+            print("create-parte2; empty form", form)
+            return render(request, 'credito_create.html', context)
+        else:
+            return HttpResponse("Not allowed method", status=400)
     else:
-        return HttpResponse("Not allowed method", status=400)
+        return HttpResponse("Unauthorized", status=401)
 
