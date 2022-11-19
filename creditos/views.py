@@ -96,7 +96,10 @@ def credito_create(request):
                 creditos = Credito.objects.all()
                 lastc = creditos[len(creditos)-1].id
 
-                if (lastc.monto != body['monto'] and lastc.estado != body['estado']):
+                if (float(lastc.monto) != float(body['monto']) 
+                            and
+                    int(lastc.cuotas) != int(body['cuotas'])
+                    ):
                     credit = Credito()
                     credit.monto = body['monto']
                     credit.cuotas = body['cuotas']
