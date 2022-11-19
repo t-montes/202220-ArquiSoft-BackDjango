@@ -78,7 +78,7 @@ def make_post(imagen, nombre, num_documento,path_image):
     multipart_data = MultipartEncoder(
         fields={
                 # a file upload field
-                'image': (('image.jpg',imagen, 'image/jpeg')),
+                'image': ('image.jpg',imagen, 'image/jpeg'),
                 # plain text fields
                 'nombre': 'value0', 
                 'num_documento': 'value1',
