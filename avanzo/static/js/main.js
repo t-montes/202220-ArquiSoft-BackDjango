@@ -34,8 +34,9 @@ if (credit_create_data != null) {
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "/creditos/creditocreate", true);
     xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send(credit_create_data);
+    resp = xhr.send(credit_create_data);
     console.log("Crédito recuperado y enviado");
+    console.log(resp);
     // eliminar datos del formulario
     localStorage.removeItem('credit_create_data');
 } else {
