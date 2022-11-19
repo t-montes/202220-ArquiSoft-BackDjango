@@ -1,4 +1,4 @@
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render
 from django.template import RequestContext
 from django.contrib import messages
 from django.http import HttpResponseRedirect, HttpResponse
