@@ -22,6 +22,7 @@ var form_submit_btn = document.getElementById("form-submit-btn");
 if (form_submit_btn != null) {
     form_submit_btn.addEventListener("click", () => {
         var form = document.getElementById("form-creditos");
+        console.log("Form:", form);
         var form_data = new FormData(form);
         var form_data_json = JSON.stringify(Object.fromEntries(form_data));
         console.log("Credito Form",form_data_json);

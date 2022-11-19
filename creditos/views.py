@@ -22,8 +22,7 @@ def creditos_list(request):
         else:
             return HttpResponse("Not allowed method", status=400)
     else:
-        print("getAll-part1")
-        return render(request, 'error.html')
+        return render(request, 'unauthorized.html')
 
 @login_required
 def credito_detail(request, id=0):
@@ -39,7 +38,7 @@ def credito_detail(request, id=0):
         else:
             return HttpResponse("Not allowed method", status=400)
     else:
-        return HttpResponse("Unauthorized", status=401)
+        return render(request, 'unauthorized.html')
 
 @login_required
 def credito_update(request):
@@ -56,7 +55,7 @@ def credito_update(request):
         else:
             return HttpResponse("Not allowed method", status=400)
     else:
-        return HttpResponse("Unauthorized", status=401)
+        return render(request, 'unauthorized.html')
 
 @login_required
 def credito_create(request):
@@ -81,5 +80,5 @@ def credito_create(request):
         else:
             return HttpResponse("Not allowed method", status=400)
     else:
-        return HttpResponse("Unauthorized", status=401)
+        return render(request, 'unauthorized.html')
 
