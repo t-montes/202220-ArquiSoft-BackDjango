@@ -27,6 +27,7 @@ def analizar_documentos(request):
 
 def documento(request,id):
     documento = get_documento(id)
+    print("DOCUMENTO",documento)
     if documento is None:
         return HttpResponse('Documento no encontrado',status=404)
     else :
