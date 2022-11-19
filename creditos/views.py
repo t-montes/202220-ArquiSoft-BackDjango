@@ -8,7 +8,16 @@ from .forms import CreditoForm
 import json
 
 def esta_funcionando_papi(request):
-    return HttpResponse("Esta funcionando papi")
+    # role = getRole(request)
+    if request.method == 'GET':
+        creditos = get_creditos()
+        context = {
+            'creditos': creditos,
+            # 'role': role
+        }
+        return render(request, 'Credito/creditos_list.html', context)
+    else:
+        return HttpResponse("Not allowed method", status=400)
 # @login_required
 def creditos_list(request):
     # role = getRole(request)
