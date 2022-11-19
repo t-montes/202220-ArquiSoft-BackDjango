@@ -10,19 +10,14 @@ def get_credito(id):
     # print("Crédito:",credit)
     return (credit)
 
-def update_credit(body:dict):
-    # print("BODY update [logic]",body)
-    credit = Credito.objects.get(id=body['id'])
-    credit.monto = body['monto']
-    credit.cuotas = body['cuotas']
-    credit.estado = body['estado']
+def update_credit(form):
+    print("FORM [logic] (update)",form)
+    credit = form.save()
     credit.save()
-    # print("Actualizado con éxito [logic]")
-    # print("Crédito:",credit)
     return ()
 
 def create_credit(form):
-    print("FORM [logic]",form)
+    print("FORM [logic] (create)",form)
     credit = form.save()
     credit.save()
     return ()
