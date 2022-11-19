@@ -262,6 +262,8 @@ ejecute el comando desde el siguiente comando dentro del proyecto Django, y para
     python3 -m pip install --upgrade Pillow
 
 
+git pull && yes yes | python3 manage.py collectstatic && wsgi --http :8080 --wsgi-file avanzo/wsgi.py
 
+git pull && git add . && git commit -m "update credito create and roles" && git push
 
 *¡LAS MIGRACIONES!*
