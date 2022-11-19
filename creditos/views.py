@@ -91,15 +91,22 @@ def credito_create(request):
 
             else:
                 print("create from Connection Recovery")
-                form = CreditoCreateForm()
                 body = json.loads(request.body)
-                credit = Credito()
-                credit.monto = body['monto']
-                credit.cuotas = body['cuotas']
-                credit.estado = "PENDIENTE"
-                credit.save()
-                messages.add_message(request, messages.SUCCESS, 'Credito creado correctamente')
-                return HttpResponseRedirect('/creditos/')
+
+                creditos = Credito.objects.all()
+                lastc = creditos[len(creditos)-1].id
+
+                if (lastc.monto != body['monto'] and lastc.estado != body['estado']):
+                    credit = Credito()
+                    credit.monto = body['monto']
+                    credit.cuotas = body['cuotas']
+                    credit.estado = "PENDIENTE"
+                    credit.save()
+                    messages.add_message(request, messages.SUCCESS, 'Credito creado correctamente')
+                    return HttpResponseRedirect('/creditos/')
+                else:
+                    print("Create not executed, element repeated")
+                    return HttpResponseRedirect('/creditos/')
 
         elif request.method == 'GET':
             form = CreditoCreateForm()
