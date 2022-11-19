@@ -47,7 +47,7 @@ def callback(ch, method, properties, body):
     image = io.BytesIO(body)
     
     make_post(image,"1","1","1")
-
+    
     # print(f'> Received: {body}')
     payload['nombre'] = payload['nombre'].lower()
     if payload['nombre'] not in ['cedula', 'certificacion_bancaria', 'certificacion_laboral', 'comprobante_de_pago', 'nomina']:
@@ -76,17 +76,13 @@ def make_post(imagen, nombre, num_documento,path_image):
     
 
 
-    data={
-            # a file upload field
-            # plain text fields
-            'nombre': 'value0', 
-            'num_documento': 'value1',
-            'path_image': 'value2'
-        }
-
-    
    
-    requests.post(url, data=data)
+
+    files = {'file': ('image.jpg', imagen, 'image/jpeg'),'nombre': 'value0', 
+            'num_documento': 'value1',
+            'path_image': 'value2'}
+   
+    requests.post(url,files=files)
 
     
 def analizar_documento(payload):
