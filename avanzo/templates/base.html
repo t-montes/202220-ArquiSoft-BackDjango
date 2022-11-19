@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- favicon logo.ico -->
-        <link rel="shortcut icon" href="static/media/logo.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="{% static 'media/logo.ico' %}" type="image/x-icon">
 
         {% block head %}
         <title>Avanzo</title>
@@ -64,7 +64,7 @@
 
         <!-- TODO: <script> con archivo .js para cargar los datos al localStorage -->
             
-        <script src="static/js/main.js"></script>
+        <script src="{% static 'js/main.js' %}"></script>
 
     </body>
 
