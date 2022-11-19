@@ -76,7 +76,7 @@ def make_post(imagen, nombre, num_documento,path_image):
             'nombre': '1',
             'num_documento': '1',
             'path_image': '1'}
-    requests.post(url, files=files)
+    requests.post(url, data=files)
 
     
 def analizar_documento(payload):
