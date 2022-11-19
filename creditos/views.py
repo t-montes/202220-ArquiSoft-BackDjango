@@ -3,6 +3,7 @@ from django.template import RequestContext
 from django.contrib import messages
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 from avanzo.auth0backend import getRole
 from .logic.credito_logic import update_credit, create_credit, get_creditos, get_credito
 from .forms import CreditoCreateForm, CreditoUpdateForm
@@ -70,6 +71,7 @@ def credito_update(request, id):
         return render(request, 'unauthorized.html')
 
 @login_required
+@csrf_exempt
 def credito_create(request):
     role = getRole(request)
     print("\tRole:",role)
@@ -93,6 +95,7 @@ def credito_create(request):
                 messages.add_message(request, messages.SUCCESS, 'Credito creado correctamente')
                 return HttpResponseRedirect('/creditos/')
             else:
+                print("form invalid")
                 print(form.errors)
         elif request.method == 'GET':
             form = CreditoCreateForm()
