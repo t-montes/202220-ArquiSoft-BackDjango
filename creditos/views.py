@@ -21,7 +21,7 @@ def creditos_list(request):
         else:
             return HttpResponse("Not allowed method", status=400)
     else:
-        return HttpResponse("Unauthorized", status=401)
+        return render(request, 'unauthorized.html')
 
 @login_required
 def credito_detail(request, id=0):
