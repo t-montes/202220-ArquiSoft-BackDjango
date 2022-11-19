@@ -43,7 +43,7 @@ channel.queue_bind(
 print('> Waiting measurements. To exit press CTRL+C')
 
 def callback(ch, method, properties, body):
-    payload = body.decode('utf-8')
+    payload = body
     payload = ast.literal_eval(payload)
     
     image = Image.open(io.BytesIO(body))    
