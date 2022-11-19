@@ -22,7 +22,7 @@ if (btn_example != null) {
 var form_creditos = document.getElementById("form-create-credito");
 if (form_creditos != null) {
     form_creditos.addEventListener("submit", (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         console.log(form_creditos);
         var form_data = new FormData(form_creditos);
         console.log(form_data);
