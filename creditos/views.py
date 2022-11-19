@@ -12,7 +12,11 @@ def creditos_list(request):
     # role = getRole(request)
     if request.method == 'GET':
         creditos = get_creditos()
-        return HttpResponse(creditos, status=200)
+        context = {
+            'creditos': creditos,
+            # 'role': role
+        }
+        return render(request, 'Credito/creditos_list.html', context)
     else:
         return HttpResponse("Not allowed method", status=400)
 

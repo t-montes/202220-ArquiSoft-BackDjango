@@ -1,24 +1,24 @@
-console.log("DJango Javascript is working 1");
+var switch_bool = localStorage.getItem('switch_bool');
 
-var firstTime = localStorage.getItem('firstTime');
-
-if (firstTime == null) {
-    localStorage.setItem('firstTime', 'true');
-    console.log("First time");
+if (switch_bool == null) {
+    localStorage.setItem('switch_bool', 'true');
 } else {
-    if (firstTime == 'true') {
-        localStorage.setItem('firstTime', 'false');
+    if (switch_bool == 'true') {
+        localStorage.setItem('switch_bool', 'false');
     } else {
-        localStorage.setItem('firstTime', 'true');
+        localStorage.setItem('switch_bool', 'true');
     }
-    console.log("Not first time; changed");
 }
 
-console.log("DJango Javascript is working 2");
+console.log("switch bool = " + switch_bool);
 
-localStorage.setItem('user', user)
+btn_example = document.getElementById("btn-example");
 
-console.log("DJango Javascript is working 3");
+example = () => {
+    console.log("example clicked");
+}
 
-console.log("user ", user);
+btn_example.addEventListener("click", example);
+
+
 
