@@ -62,12 +62,7 @@ def credito_create(request):
     role = getRole(request)
     if role in ["ADMIN", "ANALISTA", "EMPLEADO"]:
         if request.method == 'POST':
-            # print("request BODY", request.body)
-            # request.body to dict
-            body = request.body.decode('utf-8')
-            body = json.loads(body)
-            create_credit(body)
-            messages.add_message(request, messages.SUCCESS, 'Credito creado correctamente')
+            
             return HttpResponse(status=200)
         elif request.method == 'GET':
             form = CreditoCreateForm()
