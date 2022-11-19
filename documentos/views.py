@@ -30,4 +30,5 @@ def documento(request,id):
     if documento is None:
         return HttpResponse('Documento no encontrado',status=404)
     else :
+        print("hola")
         return render(request, 'documento.html', {'documento': documento})
