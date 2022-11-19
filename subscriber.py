@@ -45,9 +45,10 @@ print('> Waiting measurements. To exit press CTRL+C')
 def callback(ch, method, properties, body):
     payload = body
     image = Image.open(io.BytesIO(body))    
-    print(image.filename())
+    nombre = image.filename
+    print(" [x] Received %r" % nombre)
 
-    print(f'> Received: {body}')
+    # print(f'> Received: {body}')
     payload['nombre'] = payload['nombre'].lower()
     if payload['nombre'] not in ['cedula', 'certificacion_bancaria', 'certificacion_laboral', 'comprobante_de_pago', 'nomina']:
         print(f'Tipo de documento {payload["nombre"]} no soportado')
