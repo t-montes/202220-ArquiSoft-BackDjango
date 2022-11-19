@@ -258,8 +258,10 @@ ejecute el comando desde el siguiente comando dentro del proyecto Django, y para
     source entornos_virtuales/env_avanzo/bin/activate    
     uwsgi --http :8080 --wsgi-file avanzo/wsgi.py
 
+    python3 -m pip install --upgrade pip
+    python3 -m pip install --upgrade Pillow
 
 
 
 
-
+*¡LAS MIGRACIONES!*
