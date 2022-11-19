@@ -7,36 +7,38 @@ from .logic.credito_logic import update_credit, create_credit, get_creditos, get
 from .forms import CreditoForm
 import json
 
+@login_required
 def creditos_list(request):
-    # role = getRole(request)
-    print("parte1")
+    role = getRole(request)
     if request.method == 'GET':
         creditos = get_creditos()
         context = {
             'creditos': creditos,
             # 'role': role
         }
-        print("parte2", creditos)
         return render(request, 'creditos_list.html', context)
     else:
         return HttpResponse("Not allowed method", status=400)
 
-# @login_required
+@login_required
 def credito_detail(request, id=0):
-    # role = getRole(request)
-    if request.method == 'GET':
-        credito = get_credito(id)
-        context = {
-            'credito': credito,
-            # 'role': role
-        }
-        return render(request, 'credito_detail.html', context)
+    role = getRole(request)
+    if role in ["ADMIN", "ANALISTA"]:
+        if request.method == 'GET':
+            credito = get_credito(id)
+            context = {
+                'credito': credito,
+                # 'role': role
+            }
+            return render(request, 'credito_detail.html', context)
+        else:
+            return HttpResponse("Not allowed method", status=400)
     else:
-        return HttpResponse("Not allowed method", status=400)
+        return HttpResponse("Unauthorized", status=401)
 
-# @login_required
+@login_required
 def credito_update(request):
-    # role = getRole(request)
+    role = getRole(request)
     if request.method == 'PUT':
         print("request BODY", request.body)
         # request.body to dict
@@ -48,9 +50,10 @@ def credito_update(request):
     else:
         return HttpResponse("Not allowed method", status=400)
 
-# @login_required
+@login_required
 def credito_create(request):
-    # role = getRole(request)
+    role = getRole(request)
+    print("create-parte1")
     if request.method == 'POST':
         # print("request BODY", request.body)
         # request.body to dict
@@ -64,7 +67,8 @@ def credito_create(request):
         context = {
             'form': form,
         }
-        return render(request, 'Credito/credito_create.html', context)
+        print("create-parte2; empty form", form)
+        return render(request, 'credito_create.html', context)
     else:
         return HttpResponse("Not allowed method", status=400)
 
