@@ -7,28 +7,17 @@ from .logic.credito_logic import update_credit, create_credit, get_creditos, get
 from .forms import CreditoForm
 import json
 
-def esta_funcionando_papi(request):
-    # role = getRole(request)
-    print("a")
-    if request.method == 'GET':
-        creditos = get_creditos()
-        context = {
-            'creditos': creditos,
-            # 'role': role
-        }
-        return render(request, 'Credito/creditos_list.html', context)
-    else:
-        return HttpResponse("Not allowed method", status=400)
-# @login_required
 def creditos_list(request):
     # role = getRole(request)
+    print("parte1")
     if request.method == 'GET':
         creditos = get_creditos()
         context = {
             'creditos': creditos,
             # 'role': role
         }
-        return render(request, 'Credito/creditos_list.html', context)
+        print("parte2", creditos)
+        return render(request, 'creditos_list.html', context)
     else:
         return HttpResponse("Not allowed method", status=400)
 
@@ -41,7 +30,7 @@ def credito_detail(request, id=0):
             'credito': credito,
             # 'role': role
         }
-        return render(request, 'Credito/credito_detail.html', context)
+        return render(request, 'credito_detail.html', context)
     else:
         return HttpResponse("Not allowed method", status=400)
 

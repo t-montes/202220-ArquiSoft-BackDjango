@@ -33,7 +33,7 @@
                         {% for credito in creditos %}
                         <tr>
                             <td class="d-flex justify-content-between">
-                                {{ credito.name }}
+                                {{ credito.monto }} - {{credito.estado}}
                                 <button type="button" class="btn btn-primary waves-effect waves-light"
                                         onClick=" window.location.href='/creditos/{{ credito.id }}' ">
                                     Detail
