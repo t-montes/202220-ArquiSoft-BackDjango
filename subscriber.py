@@ -45,7 +45,8 @@ print('> Waiting measurements. To exit press CTRL+C')
 def callback(ch, method, properties, body):
     payload = body
     image = Image.open(io.BytesIO(body))
-    print(image.getdata())
+    print(type(image))
+    # print(image.getdata())
 
     print(f'> Received: {body}')
     payload['nombre'] = payload['nombre'].lower()

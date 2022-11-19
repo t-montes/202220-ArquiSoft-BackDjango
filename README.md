@@ -271,3 +271,7 @@ git pull && git add . && git commit -m "update credito create and roles" && git 
 **PILLOW**
 python3 -m pip install --upgrade pip
 python3 -m pip install --upgrade Pillow
+
+**Para matar los bichos del puerto**
+sudo fuser 8000/tcp
+sudo fuser -k 8000/tcp
