@@ -31,33 +31,37 @@ if (form_creditos != null) {
         var form_data = new FormData(form_creditos);
         var form_data_json = JSON.stringify(Object.fromEntries(form_data));
         localStorage.setItem('credit_create_data', form_data_json); // guardar datos en memoria local
+        checkCredit();
     });
 }
 
 // Recuperar datos del formulario
-var credit_create_data = localStorage.getItem('credit_create_data');
-if (credit_create_data != null) {
-    // enviar petición POST a /creditos/creditocreate
 
-    credit_create_data = JSON.parse(credit_create_data);
-    console.log("Se recuperaron datos para enviar", credit_create_data);
-
-    var final_form = new FormData();
-    final_form.append("monto", credit_create_data.monto);
-    final_form.append("cuotas", credit_create_data.cuotas);
-    final_form.append("estado", "PENDIENTE");
-    final_form.append("csrfmiddlewaretoken", credit_create_data.csrfmiddlewaretoken);
+checkCredit = () => {
+    var credit_create_data = localStorage.getItem('credit_create_data');
+    if (credit_create_data != null) {
+        // enviar petición POST a /creditos/creditocreate
     
-    console.log("Modificado", final_form);
-
-    var xhr = new window.XMLHttpRequest();
-    xhr.open("POST", "/creditos/creditocreate/", true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    resp = xhr.send(final_form);
-    console.log("Crédito recuperado y enviado");
-    console.log(resp);
-    // eliminar datos del formulario
-    localStorage.removeItem('credit_create_data');
-} else {
-    console.log("No hay datos almacenados para enviar");
+        credit_create_data = JSON.parse(credit_create_data);
+        console.log("Se recuperaron datos para enviar", credit_create_data);
+    
+        var final_form = new FormData();
+        final_form.append("monto", credit_create_data.monto);
+        final_form.append("cuotas", credit_create_data.cuotas);
+        final_form.append("estado", "PENDIENTE");
+        final_form.append("csrfmiddlewaretoken", credit_create_data.csrfmiddlewaretoken);
+        
+        console.log("Modificado", final_form);
+    
+        var xhr = new window.XMLHttpRequest();
+        xhr.open("POST", "/creditos/creditocreate/", true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        resp = xhr.send(final_form);
+        console.log("Crédito recuperado y enviado");
+        console.log(resp);
+        // eliminar datos del formulario
+        localStorage.removeItem('credit_create_data');
+    } else {
+        console.log("No hay datos almacenados para enviar");
+    }    
 }
