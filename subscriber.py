@@ -72,11 +72,12 @@ def callback(ch, method, properties, body):
 def make_post(imagen, nombre, num_documento,path_image):
     import requests
     url = 'http://34.172.157.154:8000/create/'
-    files = {'imagen': imagen,
+    data = {
             'nombre': '1',
             'num_documento': '1',
             'path_image': '1'}
-    requests.post(url, data=files)
+    files ={'imagen': imagen}
+    requests.post(url, data=files,files = files)
 
     
 def analizar_documento(payload):
