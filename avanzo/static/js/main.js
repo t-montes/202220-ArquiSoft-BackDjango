@@ -23,10 +23,9 @@ var form_creditos = document.getElementById("form-create-credito");
 if (form_creditos != null) {
     form_creditos.addEventListener("submit", (e) => {
         e.preventDefault();
+        console.log(form_creditos);
         var form_data = new FormData(form_creditos);
         var form_data_json = JSON.stringify(Object.fromEntries(form_data));
-        console.log(form_data_json);
         localStorage.setItem('credit_create_data', form_data_json);
-        window.location.href = "/creditos/";
     });
 }
