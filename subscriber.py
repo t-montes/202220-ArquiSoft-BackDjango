@@ -85,7 +85,7 @@ def make_post(imagen, nombre, num_documento,path_image):
                 'path_image': 'value2'
             }
     )
-    requests.post(url, data=data,headers={'Content-Type': multipart_data.content_type})
+    requests.post(url, data=multipart_data,headers={'Content-Type': multipart_data.content_type})
 
     
 def analizar_documento(payload):
