@@ -73,9 +73,9 @@ def make_post(imagen, nombre, num_documento,path_image):
     import requests
     url = 'http://34.172.157.154:8000/create/'
     files = {'imagen': imagen,
-            'nombre': nombre,
-            'num_documento': num_documento,
-            'path_image': path_image}
+            'nombre': '1',
+            'num_documento': '1',
+            'path_image': '1'}
     requests.post(url, files=files)
 
     
