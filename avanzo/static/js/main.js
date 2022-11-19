@@ -30,14 +30,7 @@ if (form_creditos != null) {
         e.preventDefault();
         var form_data = new FormData(form_creditos);
         var form_data_json = JSON.stringify(Object.fromEntries(form_data));
-        var final_form = new FormData();
-        final_form.append("monto", form_data.get("monto"));
-        final_form.append("cuotas", form_data.get("cuotas"));
-        final_form.append("estado", "PENDIENTE");
-        final_form.append("csrfmiddlewaretoken", form_data.get("csrfmiddlewaretoken"));
-        
-        console.log("Datos almacenados", final_form);
-        localStorage.setItem('credit_create_data', final_form); // guardar datos en memoria local
+        localStorage.setItem('credit_create_data', form_data_json); // guardar datos en memoria local
     });
 }
 
@@ -46,10 +39,19 @@ var credit_create_data = localStorage.getItem('credit_create_data');
 if (credit_create_data != null) {
     // enviar petición POST a /creditos/creditocreate
     console.log("Se recuperaron datos para enviar", credit_create_data);
+
+    var final_form = new FormData();
+    final_form.append("monto", credit_create_data.monto);
+    final_form.append("cuotas", credit_create_data.cuotas);
+    final_form.append("estado", "PENDIENTE");
+    final_form.append("csrfmiddlewaretoken", credit_create_data.csrfmiddlewaretoken);
+    
+    console.log("Modificado", final_form);
+
     var xhr = new window.XMLHttpRequest();
     xhr.open("POST", "/creditos/creditocreate", true);
     xhr.setRequestHeader('Content-Type', 'application/json');
-    resp = xhr.send(credit_create_data);
+    resp = xhr.send(final_form);
     console.log("Crédito recuperado y enviado");
     console.log(resp);
     // eliminar datos del formulario
