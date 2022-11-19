@@ -71,18 +71,8 @@ def callback(ch, method, properties, body):
 
 def make_post(imagen, nombre, num_documento,path_image):
     import requests
-    from requests_toolbelt.multipart.encoder import MultipartEncoder
     url = 'http://34.172.157.154:8000/create/'
-    
-
-
-   
-
-    files = {'file': ('image.jpg', imagen, 'image/jpeg'),'nombre': 'value0', 
-            'num_documento': 'value1',
-            'path_image': 'value2'}
-   
-    requests.post(url,files=files)
+    print("AAAAAAA")
 
     
 def analizar_documento(payload):
