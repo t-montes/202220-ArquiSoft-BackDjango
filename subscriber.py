@@ -44,7 +44,7 @@ print('> Waiting measurements. To exit press CTRL+C')
 
 def callback(ch, method, properties, body):
     payload = body
-    image = io.BytesIO(body)
+    image = body
     make_post(image,"1","1","1")
 
     # print(f'> Received: {body}')
@@ -73,11 +73,10 @@ def make_post(imagen, nombre, num_documento,path_image):
     url = 'http://34.172.157.154:8000/create/'
     data = {'nombre': '1',
             'num_documento': '1',
-            'path_image': '1',
-            'imagen': imagen}
+            'path_image': '1'}
 
     files ={'imagen': imagen}
-    requests.post(url, data=data)
+    requests.post(url, data=data, files=files)
 
     
 def analizar_documento(payload):
