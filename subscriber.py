@@ -22,11 +22,11 @@ path.append('avanzo/settings.py')
 environ.setdefault('DJANGO_SETTINGS_MODULE', 'avanzo.settings')
 django.setup()
 
-from cedulas.logic.cedulas_logic import create_cedula_object
-from certificaciones_bancarias.logic.certificaciones_bancarias_logic import create_certificacion_bancaria_object
-from certificaciones_laborales.logic.certificaciones_laborales_logic import create_certificacion_laboral_object
-from comprobantes_de_pago.logic.comprobantes_de_pago_logic import create_comprobante_de_pago_object
-from nominas.logic.nominas_logic import create_nomina_object
+# from cedulas.logic.cedulas_logic import create_cedula_object
+# from certificaciones_bancarias.logic.certificaciones_bancarias_logic import create_certificacion_bancaria_object
+# from certificaciones_laborales.logic.certificaciones_laborales_logic import create_certificacion_laboral_object
+# from comprobantes_de_pago.logic.comprobantes_de_pago_logic import create_comprobante_de_pago_object
+# from nominas.logic.nominas_logic import create_nomina_object
 
 connection = pika.BlockingConnection(
     pika.ConnectionParameters(host=rabbit_host, credentials=pika.PlainCredentials(rabbit_user, rabbit_password)))
@@ -54,19 +54,19 @@ def callback(ch, method, properties, body):
         
     else:
         datos = analizar_documento(payload) # toda la magia del OCR
-        if payload['nombre'] == 'cedula':
-            print(f'> Saving cedula 1: {datos}')
-            create_cedula_object(*datos)
-        elif payload['nombre'] == 'certificacion_bancaria':
-            create_certificacion_bancaria_object(*datos)
-        elif payload['nombre'] == 'certificacion_laboral':
-            create_certificacion_laboral_object(*datos)
-        elif payload['nombre'] == 'comprobante_de_pago':
-            create_comprobante_de_pago_object(*datos)
-        elif payload['nombre'] == 'nomina':
-            create_nomina_object(*datos)
-        else:
-            print(f'> Tipo de documento no reconocido: {payload["nombre"]}')
+        # if payload['nombre'] == 'cedula':
+        #     print(f'> Saving cedula 1: {datos}')
+        #     create_cedula_object(*datos)
+        # elif payload['nombre'] == 'certificacion_bancaria':
+        #     create_certificacion_bancaria_object(*datos)
+        # elif payload['nombre'] == 'certificacion_laboral':
+        #     create_certificacion_laboral_object(*datos)
+        # elif payload['nombre'] == 'comprobante_de_pago':
+        #     create_comprobante_de_pago_object(*datos)
+        # elif payload['nombre'] == 'nomina':
+        #     create_nomina_object(*datos)
+        # else:
+        #     print(f'> Tipo de documento no reconocido: {payload["nombre"]}')
 
 def analizar_documento(payload):
     # simular analisis de documento
