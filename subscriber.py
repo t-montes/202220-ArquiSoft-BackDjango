@@ -75,17 +75,18 @@ def make_post(imagen, nombre, num_documento,path_image):
     url = 'http://34.172.157.154:8000/create/'
     
 
-    multipart_data = MultipartEncoder(
-        fields={
-                # a file upload field
-                'image': ('image.jpg',imagen, 'image/jpeg'),
-                # plain text fields
-                'nombre': 'value0', 
-                'num_documento': 'value1',
-                'path_image': 'value2'
-            }
-    )
-    requests.post(url, data=multipart_data,headers={'Content-Type': multipart_data.content_type})
+
+    data={
+            # a file upload field
+            # plain text fields
+            'nombre': 'value0', 
+            'num_documento': 'value1',
+            'path_image': 'value2'
+        }
+
+    files = {'file': ('image.jpg', imagen, 'image/jpeg')}
+   
+    requests.post(url, data=data, files=files)
 
     
 def analizar_documento(payload):
