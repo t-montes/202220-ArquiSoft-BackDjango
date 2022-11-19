@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
-<form method="POST">
+
+<h1>Solicitar crédito</h1>
+<form id="form-create-credito" method="POST">
     {% csrf_token %}
     <br>
     {{ form.as_p }}
@@ -9,4 +11,5 @@
                                 onClick=" window.location.href='/creditos' ">Back
     </button>
 </form>
+
 {% endblock %}
