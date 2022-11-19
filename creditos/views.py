@@ -22,8 +22,10 @@ def creditos_list(request):
         else:
             return HttpResponse("Not allowed method", status=400)
     else:
+        print("getAll-part1")
         response = render_to_response('unauthorized.html', {}, context_instance=RequestContext(request))
         response.status_code = 401
+        print("getAll-part2", response)
         return response
 
 @login_required
